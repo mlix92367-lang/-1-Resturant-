@@ -9,25 +9,26 @@
   :root{--main:#D4AF37;--dark:#8B4513;--bg:#FFFAF0;--card:#FFFFFF;--text:#333;}
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal', sans-serif;scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--text);}
-  header{background:linear-gradient(135deg,#D4AF37,#8B4513);text-align:center;padding:30px 15px;position:sticky;top:0;z-index:100;}
+  header{background:linear-gradient(135deg,#D4AF37,#8B4513);text-align:center;padding:30px 15px;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
   header h1{font-size:34px;font-weight:900;color:#fff;margin-bottom:6px;}
   header p{color:#fff;font-size:15px;opacity:0.95;}
   nav{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
-  nav a{background:rgba(255,255,255,0.25);padding:9px 18px;border-radius:25px;color:#fff;text-decoration:none;font-size:14px;font-weight:700;}
+  nav a{background:rgba(255,255,255,0.25);padding:9px 18px;border-radius:25px;color:#fff;text-decoration:none;font-size:14px;font-weight:700;border:1px solid rgba(255,255,255,0.3);cursor:pointer;}
   nav a:hover{background:#fff;color:var(--dark);}
 .main-wrapper{display:flex;gap:20px;max-width:1400px;margin:25px auto;padding:0 15px;}
 .menu-content{flex:1;}
 .sidebar{width:380px;position:sticky;top:130px;height:fit-content;}
-.category-banner{background:var(--main);color:#fff;padding:15px 20px;border-radius:12px;font-size:21px;margin-bottom:20px;font-weight:900;text-align:center;}
+.category-banner{background:var(--main);color:#fff;padding:15px 20px;border-radius:12px;font-size:21px;margin-bottom:20px;font-weight:900;text-align:center;box-shadow:0 3px 10px rgba(212,175,55,0.3);}
 .item-card{background:var(--card);padding:20px;border-radius:15px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid #eee;text-align:center;}
 .item-name{font-size:18px;font-weight:900;margin-bottom:8px;color:var(--dark);}
 .price-main{color:var(--main);font-weight:900;font-size:18px;margin-bottom:12px;}
 .size-options{display:flex;justify-content:center;gap:10px;margin-bottom:12px;}
 .size-btn{background:#f5f5f5;border:2px solid #ddd;color:var(--text);border-radius:50%;width:55px;height:55px;cursor:pointer;font-weight:900;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:0.3s;font-size:12px;}
 .size-btn.active{background:var(--main);color:#fff;border-color:var(--main);}
-.btn-add{width:100%;background:var(--main);color:#fff;border:none;padding:12px;border-radius:10px;font-weight:900;cursor:pointer;font-size:15px;}
+.btn-add{width:100%;background:var(--main);color:#fff;border:none;padding:12px;border-radius:10px;font-weight:900;cursor:pointer;font-size:15px;transition:0.3s;}
+.btn-add:hover{background:var(--dark);}
 
-.cart-box,.customer-form{background:var(--card);padding:18px;border-radius:15px;margin-bottom:15px;box-shadow:0 3px 12px rgba(0,0,0,0.05);}
+.cart-box,.customer-form{background:var(--card);padding:18px;border-radius:15px;margin-bottom:15px;box-shadow:0 3px 12px rgba(0,0,0,0.05);border:1px solid #eee;}
 .cart-box h3,.customer-form h3{color:var(--dark);margin-bottom:12px;text-align:center;font-weight:900;font-size:18px;}
 .cart-items{max-height:250px;overflow-y:auto;margin-bottom:10px;}
 .cart-item{display:flex;justify-content:space-between;align-items:center;background:var(--bg);padding:10px;border-radius:10px;margin-bottom:8px;font-size:12px;}
@@ -35,9 +36,10 @@
 .qty-btn{background:var(--main);color:#fff;border:none;padding:4px 8px;border-radius:6px;cursor:pointer;font-weight:900;}
 .total-row{display:flex;justify-content:space-between;margin-bottom:8px;font-size:14px;font-weight:700;}
 .total-final{color:var(--dark);font-size:16px;font-weight:900;border-top:2px solid var(--main);padding-top:8px;}
-.delivery-note{font-size:11px;color:var(--dark);text-align:center;margin:8px 0;}
-.customer-form input,.customer-form select{width:100%;padding:11px;margin-bottom:10px;border-radius:10px;border:1px solid #ddd;background:#fff;}
-.order-btn{width:100%;background:#25D366;color:#fff;padding:15px;border-radius:12px;font-weight:900;font-size:16px;border:none;cursor:pointer;}
+.delivery-note{font-size:11px;color:var(--dark);text-align:center;margin:8px 0;font-weight:700;}
+.customer-form input,.customer-form select{width:100%;padding:11px;margin-bottom:10px;border-radius:10px;border:1px solid #ddd;background:#fff;color:var(--text);}
+.order-btn{width:100%;background:#25D366;color:#fff;padding:15px;border-radius:12px;font-weight:900;font-size:16px;border:none;cursor:pointer;transition:0.3s;}
+.order-btn:hover{background:#128C7E;}
 .delivery-toggle{display:flex;gap:8px;margin-bottom:12px;}
 .delivery-toggle button{flex:1;padding:11px;border-radius:10px;border:2px solid #ddd;background:#fff;color:var(--text);font-weight:700;cursor:pointer;}
 .delivery-toggle button.active{background:var(--main);color:#fff;border-color:var(--main);}
@@ -61,14 +63,14 @@
 <div class="main-wrapper">
   <div class="menu-content">
 
-    <!-- الصحون -->
+    <!-- 1. الصحون -->
     <div class="category-banner" id="plates">صحون</div>
     <div class="item-card"><div class="item-name">صحن فول</div><div class="price-main" id="foul-price">AED 10</div><div class="size-options"><button class="size-btn active" onclick="selectSize('foul', 'S', 10, this)"><span>S</span><span>10</span></button><button class="size-btn" onclick="selectSize('foul', 'M', 15, this)"><span>M</span><span>15</span></button><button class="size-btn" onclick="selectSize('foul', 'L', 20, this)"><span>L</span><span>20</span></button></div><button class="btn-add" onclick="addSelectedItem('foul')">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">صحن مقالي مشكلة</div><div class="price-main" id="makali-price">AED 15</div><div class="size-options"><button class="size-btn active" onclick="selectSize('makali', 'S', 15, this)"><span>S</span><span>15</span></button><button class="size-btn" onclick="selectSize('makali', 'M', 20, this)"><span>M</span><span>20</span></button><button class="size-btn" onclick="selectSize('makali', 'L', 25, this)"><span>L</span><span>25</span></button></div><button class="btn-add" onclick="addSelectedItem('makali')">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">صحن شكشوكة</div><div class="price-main" id="shak-price">AED 12</div><div class="size-options"><button class="size-btn active" onclick="selectSize('shak', 'S', 12, this)"><span>S</span><span>12</span></button><button class="size-btn" onclick="selectSize('shak', 'M', 15, this)"><span>M</span><span>15</span></button><button class="size-btn" onclick="selectSize('shak', 'L', 20, this)"><span>L</span><span>20</span></button></div><button class="btn-add" onclick="addSelectedItem('shak')">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">صحن كبدة</div><div class="price-main" id="kibda-price">AED 15</div><div class="size-options"><button class="size-btn active" onclick="selectSize('kibda', 'S', 15, this)"><span>S</span><span>15</span></button><button class="size-btn" onclick="selectSize('kibda', 'M', 20, this)"><span>M</span><span>20</span></button><button class="size-btn" onclick="selectSize('kibda', 'L', 25, this)"><span>L</span><span>25</span></button></div><button class="btn-add" onclick="addSelectedItem('kibda')">+ اضافة للسلة</button></div>
 
-    <!-- المقبلات -->
+    <!-- 2. المقبلات -->
     <div class="category-banner" id="appetizers">مقبلات</div>
     <div class="item-card"><div class="item-name">صحن حمص</div><div class="price-main" id="hummus-price">AED 10</div><div class="size-options"><button class="size-btn active" onclick="selectSize('hummus', 'S', 10, this)"><span>S</span><span>10</span></button><button class="size-btn" onclick="selectSize('hummus', 'M', 15, this)"><span>M</span><span>15</span></button><button class="size-btn" onclick="selectSize('hummus', 'L', 20, this)"><span>L</span><span>20</span></button></div><button class="btn-add" onclick="addSelectedItem('hummus')">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">صحن حمص باللحمة</div><div class="price-main" id="hummusl-price">AED 15</div><div class="size-options"><button class="size-btn active" onclick="selectSize('hummusl', 'S', 15, this)"><span>S</span><span>15</span></button><button class="size-btn" onclick="selectSize('hummusl', 'M', 20, this)"><span>M</span><span>20</span></button><button class="size-btn" onclick="selectSize('hummusl', 'L', 25, this)"><span>L</span><span>25</span></button></div><button class="btn-add" onclick="addSelectedItem('hummusl')">+ اضافة للسلة</button></div>
@@ -76,7 +78,7 @@
     <div class="item-card"><div class="item-name">صحن تبولة</div><div class="price-main" id="tabola-price">AED 12</div><div class="size-options"><button class="size-btn active" onclick="selectSize('tabola', 'S', 12, this)"><span>S</span><span>12</span></button><button class="size-btn" onclick="selectSize('tabola', 'M', 15, this)"><span>M</span><span>15</span></button><button class="size-btn" onclick="selectSize('tabola', 'L', 20, this)"><span>L</span><span>20</span></button></div><button class="btn-add" onclick="addSelectedItem('tabola')">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">صحن فتوش</div><div class="price-main" id="fattoush-price">AED 12</div><div class="size-options"><button class="size-btn active" onclick="selectSize('fattoush', 'S', 12, this)"><span>S</span><span>12</span></button><button class="size-btn" onclick="selectSize('fattoush', 'M', 15, this)"><span>M</span><span>15</span></button><button class="size-btn" onclick="selectSize('fattoush', 'L', 20, this)"><span>L</span><span>20</span></button></div><button class="btn-add" onclick="addSelectedItem('fattoush')">+ اضافة للسلة</button></div>
 
-    <!-- الشورما -->
+    <!-- 3. الشورما -->
     <div class="category-banner" id="shawarma">شورما</div>
     <div class="item-card"><div class="item-name">ساندويش شاورما دجاج</div><div class="price-main" id="shawd-price">AED 7</div><div class="size-options"><button class="size-btn active" onclick="selectSize('shawd', 'S', 7, this)"><span>S</span><span>7</span></button><button class="size-btn" onclick="selectSize('shawd', 'M', 9, this)"><span>M</span><span>9</span></button><button class="size-btn" onclick="selectSize('shawd', 'L', 11, this)"><span>L</span><span>11</span></button></div><button class="btn-add" onclick="addSelectedItem('shawd')">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">ساندويش شاورما لحم</div><div class="price-main" id="shawn-price">AED 8</div><div class="size-options"><button class="size-btn active" onclick="selectSize('shawn', 'S', 8, this)"><span>S</span><span>8</span></button><button class="size-btn" onclick="selectSize('shawn', 'M', 10, this)"><span>M</span><span>10</span></button><button class="size-btn" onclick="selectSize('shawn', 'L', 12, this)"><span>L</span><span>12</span></button></div><button class="btn-add" onclick="addSelectedItem('shawn')">+ اضافة للسلة</button></div>
@@ -89,7 +91,7 @@
     <div class="item-card"><div class="item-name">صحن شاورما دجاج مع حمص</div><div class="price-main">AED 30</div><button class="btn-add" onclick="addItem('صحن شاورما دجاج مع حمص', 30)">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">صحن شاورما لحم مع حمص</div><div class="price-main">AED 35</div><button class="btn-add" onclick="addItem('صحن شاورما لحم مع حمص', 35)">+ اضافة للسلة</button></div>
 
-    <!-- المشاوي -->
+    <!-- 4. المشاوي -->
     <div class="category-banner" id="grills">مشاوي</div>
     <div class="item-card"><div class="item-name">دجاج ماكينة مع مقبلات</div><div class="price-main">AED 25</div><button class="btn-add" onclick="addItem('دجاج ماكينة مع مقبلات', 25)">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">نصف دجاجة ماكينة مع مقبلات</div><div class="price-main">AED 15</div><button class="btn-add" onclick="addItem('نصف دجاجة ماكينة', 15)">+ اضافة للسلة</button></div>
@@ -98,12 +100,12 @@
     <div class="item-card"><div class="item-name">1 كيلو شيش طاووق</div><div class="price-main">AED 60</div><button class="btn-add" onclick="addItem('1 كيلو شيش طاووق', 60)">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">صينية مشاوي مشكلة 3 كغ</div><div class="price-main">AED 160</div><button class="btn-add" onclick="addItem('صينية مشاوي 3 كغ', 160)">+ اضافة للسلة</button></div>
 
-    <!-- البرجر -->
+    <!-- 5. البرجر -->
     <div class="category-banner" id="burgers">برجر</div>
     <div class="item-card"><div class="item-name">برجر دجاج</div><div class="price-main">AED 10</div><button class="btn-add" onclick="addItem('برجر دجاج', 10)">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">برجر لحم</div><div class="price-main">AED 10</div><button class="btn-add" onclick="addItem('برجر لحم', 10)">+ اضافة للسلة</button></div>
 
-    <!-- الساندويتشات -->
+    <!-- 6. الساندويتشات -->
     <div class="category-banner" id="sandwiches">ساندويتشات</div>
     <div class="item-card"><div class="item-name">ساندويش كباب لحم</div><div class="price-main" id="kebabL-price">AED 10</div><div class="size-options"><button class="size-btn active" onclick="selectSize('kebabL', 'S', 10, this)"><span>S</span><span>10</span></button><button class="size-btn" onclick="selectSize('kebabL', 'L', 15, this)"><span>L</span><span>15</span></button></div><button class="btn-add" onclick="addSelectedItem('kebabL')">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">ساندويش كباب دجاج</div><div class="price-main" id="kebabD-price">AED 8</div><div class="size-options"><button class="size-btn active" onclick="selectSize('kebabD', 'S', 8, this)"><span>S</span><span>8</span></button><button class="size-btn" onclick="selectSize('kebabD', 'L', 12, this)"><span>L</span><span>12</span></button></div><button class="btn-add" onclick="addSelectedItem('kebabD')">+ اضافة للسلة</button></div>
@@ -121,13 +123,13 @@
     <div class="item-card"><div class="item-name">ساندويش حمص باللحمة</div><div class="price-main">AED 16</div><button class="btn-add" onclick="addItem('ساندويش حمص باللحمة', 16)">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">ساندويش شكشوكة</div><div class="price-main">AED 12</div><button class="btn-add" onclick="addItem('ساندويش شكشوكة', 12)">+ اضافة للسلة</button></div>
 
-    <!-- العصائر -->
+    <!-- 7. العصائر -->
     <div class="category-banner" id="juices">عصائر طازجة</div>
     <div class="item-card"><div class="item-name">عصير مانجا</div><div class="price-main">AED 8</div><button class="btn-add" onclick="addItem('عصير مانجا', 8)">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">عصير فراولة</div><div class="price-main">AED 10</div><button class="btn-add" onclick="addItem('عصير فراولة', 10)">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">عصير برتقال</div><div class="price-main">AED 8</div><button class="btn-add" onclick="addItem('عصير برتقال', 8)">+ اضافة للسلة</button></div>
 
-    <!-- المشروبات -->
+    <!-- 8. المشروبات -->
     <div class="category-banner" id="drinks">مشروبات</div>
     <div class="item-card"><div class="item-name">مياه</div><div class="price-main">AED 1</div><button class="btn-add" onclick="addItem('مياه', 1)">+ اضافة للسلة</button></div>
     <div class="item-card"><div class="item-name">بيبسي</div><div class="price-main">AED 3</div><button class="btn-add" onclick="addItem('بيبسي', 3)">+ اضافة للسلة</button></div>
@@ -157,9 +159,4 @@
       <div id="delivery-section">
         <button type="button" class="location-btn" onclick="getLocation()">📍 استخدم موقعي الحالي</button>
         <input type="text" id="customer-location" placeholder="رابط الموقع *" readonly>
-        <input type="text" id="customer-house" placeholder="رقم الشقة / الفلة *">
-        <select id="delivery-distance" onchange="updateCart()">
-          <option value="0">ضمن 1 كم - مجانا</option>
-          <option value="5">من 1 الى 5 كم - 5 درهم</option>
-          <option value="8">من 5 الى 10 كم - 8 درهم</option>
-          <option value="12">اكثر من 10 كم - 12 در
+        <input type="text" id="customer-house

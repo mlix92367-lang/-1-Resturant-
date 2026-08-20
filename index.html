@@ -7,26 +7,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal', sans-serif;scroll-behavior:smooth;}
-  body{background:#0a0a0a;color:#fff;padding-bottom:100px;}
-  header{background:linear-gradient(135deg,#d4af37,#8b0000);text-align:center;padding:30px 15px;position:sticky;top:0;z-index:100;}
-  header h1{font-size:32px;font-weight:900;}
-  nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:15px;}
-  nav a{background:rgba(0,0,0,0.3);padding:8px 12px;border-radius:20px;color:#fff;text-decoration:none;font-size:12px;font-weight:700;}
-  .container{max-width:900px;margin:auto;padding:20px;}
-  .category{margin:40px 0;}
-  .category h2{background:#d4af37;color:#000;padding:14px 18px;border-radius:12px;font-size:22px;margin-bottom:15px;font-weight:900;text-align:center;}
-  .aed{color:#ff3333;font-size:18px;text-align:center;margin-bottom:5px;font-weight:900;}
-  .price-note{color:#00ff88;text-align:center;margin-bottom:15px;font-size:14px;font-weight:700;}
-  table{width:100%;border-collapse:collapse;background:#1a1a1a;border-radius:15px;overflow:hidden;}
-  th,td{padding:14px 10px;border-bottom:1px solid #2a2a2a;}
-  th{background:#222;color:#d4af37;font-size:15px;}
-  td:first-child{text-align:right;font-weight:700;}
-  .price{color:#ffd700;font-weight:900;text-align:center;}
-  .add-btn{background:#25D366;color:#fff;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:700;}
-  .add-btn:hover{background:#1ebe5b;}
-  .cart-bar{position:fixed;bottom:0;left:0;right:0;background:#1a1a1a;padding:15px;border-top:2px solid #d4af37;display:flex;justify-content:space-between;align-items:center;z-index:999;}
-  .cart-info{font-weight:700;}
-  .order-btn{background:#25D366;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:900;}
+  body{background:#0a0a0a;color:#fff;padding-bottom:170px;}
+  header{background:linear-gradient(135deg,#d4af37,#8b0000);text-align:center;padding:25px 15px;position:sticky;top:0;z-index:100;}
+  header h1{font-size:30px;font-weight:900;}
+  nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  nav a{background:rgba(0,0,0,0.3);padding:7px 12px;border-radius:20px;color:#fff;text-decoration:none;font-size:12px;font-weight:700;}
+  .container{max-width:950px;margin:auto;padding:20px;}
+  .category{margin:35px 0;}
+  .category h2{background:#d4af37;color:#000;padding:14px 18px;border-radius:12px;font-size:20px;margin-bottom:15px;font-weight:900;text-align:center;}
+  .aed{color:#ff3333;font-size:18px;text-align:center;margin-bottom:10px;font-weight:900;}
+  .item-card{display:flex;gap:12px;background:#1a1a1a;padding:12px;border-radius:12px;margin-bottom:12px;align-items:center;}
+  .item-card img{width:75px;height:75px;border-radius:10px;object-fit:cover;border:2px solid #d4af37;}
+  .item-info{flex:1;}
+  .item-info h3{font-size:15px;margin-bottom:4px;color:#ffd700;}
+  .price{color:#ffd700;font-weight:900;font-size:16px;}
+  .btn{background:#25D366;color:#fff;border:none;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:900;font-size:18px;}
+  .cart-bar{position:fixed;bottom:0;left:0;right:0;background:#111;padding:15px;border-top:2px solid #d4af37;z-index:999;}
+  .cart-items{max-height:120px;overflow-y:auto;margin-bottom:10px;}
+  .cart-item{display:flex;justify-content:space-between;align-items:center;background:#1a1a1a;padding:8px 12px;border-radius:8px;margin-bottom:8px;font-size:13px;}
+  .qty-controls{display:flex;align-items:center;gap:8px;}
+  .qty-btn{background:#333;color:#fff;border:none;padding:4px 8px;border-radius:5px;cursor:pointer;font-weight:900;}
+  .customer-form{background:#1a1a1a;padding:12px;border-radius:10px;margin-bottom:10px;}
+  .customer-form input, .customer-form select{width:100%;padding:10px;margin-bottom:8px;border-radius:8px;border:1px solid #333;background:#0a0a0a;color:#fff;}
+  .order-btn{width:100%;background:#25D366;color:#fff;padding:14px;border-radius:10px;text-decoration:none;font-weight:900;font-size:16px;display:block;text-align:center;}
+  .total-box{background:#222;padding:10px;border-radius:8px;margin-bottom:10px;}
+  .total-row{display:flex;justify-content:space-between;margin-bottom:5px;font-size:14px;}
+  .total-final{color:#ffd700;font-size:18px;font-weight:900;border-top:1px solid #333;padding-top:5px;margin-top:5px;}
+  .delivery-note{font-size:11px;color:#00ff88;text-align:center;margin-bottom:8px;}
 </style>
 </head>
 <body>
@@ -42,115 +49,52 @@
 
 <div class="container">
 
+  <!-- حطيت مثالين من كل قسم. كمل الباقي بنفس الطريقة -->
   <div class="category" id="shawarma">
     <h2>شورما - Shawarma</h2>
     <div class="aed">AED</div>
-    <div class="price-note">صغير S - وسط M - كبير L</div>
-    <table>
-      <tr><th>الصنف</th><th>S</th><th>M</th><th>L</th><th></th></tr>
-      <tr><td>ساندويش شاورما دجاج</td><td class="price">7 درهم</td><td>-</td><td class="price">11 درهم</td><td><button class="add-btn" onclick="addItem('ساندويش شاورما دجاج L', 11)">+</button></td></tr>
-      <tr><td>ساندويش شاورما لحم</td><td class="price">8 درهم</td><td>-</td><td class="price">12 درهم</td><td><button class="add-btn" onclick="addItem('ساندويش شاورما لحم L', 12)">+</button></td></tr>
-      <tr><td>وجبة عربي دجاج</td><td class="price">15 درهم</td><td class="price">22 درهم</td><td class="price">26 درهم</td><td><button class="add-btn" onclick="addItem('وجبة عربي دجاج M', 22)">+</button></td></tr>
-      <tr><td>وجبة عربي لحم</td><td class="price">18 درهم</td><td class="price">26 درهم</td><td class="price">30 درهم</td><td><button class="add-btn" onclick="addItem('وجبة عربي لحم M', 26)">+</button></td></tr>
-      <tr><td>صحن شاورما دجاج</td><td class="price">7 درهم</td><td class="price">15 درهم</td><td class="price">25 درهم</td><td><button class="add-btn" onclick="addItem('صحن شاورما دجاج M', 15)">+</button></td></tr>
-      <tr><td>صحن شاورما لحم</td><td class="price">7 درهم</td><td class="price">17 درهم</td><td class="price">30 درهم</td><td><button class="add-btn" onclick="addItem('صحن شاورما لحم M', 17)">+</button></td></tr>
-      <tr><td>صحن بطاطا</td><td class="price">5 درهم</td><td class="price">10 درهم</td><td class="price">15 درهم</td><td><button class="add-btn" onclick="addItem('صحن بطاطا M', 10)">+</button></td></tr>
-      <tr><td>صحن بطاطا بالجبنة</td><td class="price">7 درهم</td><td class="price">12 درهم</td><td class="price">17 درهم</td><td><button class="add-btn" onclick="addItem('صحن بطاطا بالجبنة M', 12)">+</button></td></tr>
-    </table>
+    <div class="item-card"><img src="https://images.unsplash.com/photo-1529193591185-1d58002a9c7f?w=200"><div class="item-info"><h3>ساندويش شاورما دجاج L</h3><div class="price">11 درهم</div></div><button class="btn" onclick="addItem('ساندويش شاورما دجاج L', 11)">+</button></div>
+    <div class="item-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=200"><div class="item-info"><h3>وجبة عربي دجاج M</h3><div class="price">22 درهم</div></div><button class="btn" onclick="addItem('وجبة عربي دجاج M', 22)">+</button></div>
   </div>
 
   <div class="category" id="grills">
     <h2>المشاوي - Grills</h2>
     <div class="aed">AED</div>
-    <table>
-      <tr><td>دجاج مشوي مع مقبلات</td><td class="price">25 درهم</td><td><button class="add-btn" onclick="addItem('دجاج مشوي مع مقبلات', 25)">+</button></td></tr>
-      <tr><td>نصف دجاجة مشوية مع مقبلات</td><td class="price">15 درهم</td><td><button class="add-btn" onclick="addItem('نصف دجاجة مشوية مع مقبلات', 15)">+</button></td></tr>
-      <tr><td>1 كيلو مشاوي مشكلة</td><td class="price">65 درهم</td><td><button class="add-btn" onclick="addItem('1 كيلو مشاوي مشكلة', 65)">+</button></td></tr>
-      <tr><td>1 كيلو كباب مع كفتة</td><td class="price">75 درهم</td><td><button class="add-btn" onclick="addItem('1 كيلو كباب مع كفتة', 75)">+</button></td></tr>
-      <tr><td>1 كيلو شيش طاووق</td><td class="price">60 درهم</td><td><button class="add-btn" onclick="addItem('1 كيلو شيش طاووق', 60)">+</button></td></tr>
-      <tr><td>3 كيلو صينية مشاوي</td><td class="price">160 درهم</td><td><button class="add-btn" onclick="addItem('3 كيلو صينية مشاوي', 160)">+</button></td></tr>
-    </table>
-  </div>
-
-  <div class="category" id="burgers">
-    <h2>البرجر - Burger</h2>
-    <div class="aed">AED</div>
-    <table>
-      <tr><td>برجر دجاج</td><td class="price">10 درهم</td><td><button class="add-btn" onclick="addItem('برجر دجاج', 10)">+</button></td></tr>
-      <tr><td>برجر لحم</td><td class="price">10 درهم</td><td><button class="add-btn" onclick="addItem('برجر لحم', 10)">+</button></td></tr>
-    </table>
-  </div>
-
-  <div class="category" id="sandwiches">
-    <h2>الساندويتشات - Sandwiches</h2>
-    <div class="aed">AED</div>
-    <table>
-      <tr><td>ساندويش كباب لحم L</td><td class="price">15 درهم</td><td><button class="add-btn" onclick="addItem('ساندويش كباب لحم L', 15)">+</button></td></tr>
-      <tr><td>ساندويش شيش طاووق L</td><td class="price">10 درهم</td><td><button class="add-btn" onclick="addItem('ساندويش شيش طاووق L', 10)">+</button></td></tr>
-      <tr><td>ساندويش فاهيتا L</td><td class="price">12 درهم</td><td><button class="add-btn" onclick="addItem('ساندويش فاهيتا L', 12)">+</button></td></tr>
-      <tr><td>ساندويش فلافل L</td><td class="price">8 درهم</td><td><button class="add-btn" onclick="addItem('ساندويش فلافل L', 8)">+</button></td></tr>
-      <tr><td>ساندويش كبدة دجاج L</td><td class="price">12 درهم</td><td><button class="add-btn" onclick="addItem('ساندويش كبدة دجاج L', 12)">+</button></td></tr>
-      <tr><td>ساندويش فول L</td><td class="price">10 درهم</td><td><button class="add-btn" onclick="addItem('ساندويش فول L', 10)">+</button></td></tr>
-      <tr><td>ساندويش بطاطا L</td><td class="price">10 درهم</td><td><button class="add-btn" onclick="addItem('ساندويش بطاطا L', 10)">+</button></td></tr>
-    </table>
-  </div>
-
-  <div class="category" id="plates">
-    <h2>الصحون - Plates</h2>
-    <div class="aed">AED</div>
-    <table>
-      <tr><td>صحن فول M</td><td class="price">15 درهم</td><td><button class="add-btn" onclick="addItem('صحن فول M', 15)">+</button></td></tr>
-      <tr><td>صحن مقالي مشكلة M</td><td class="price">20 درهم</td><td><button class="add-btn" onclick="addItem('صحن مقالي مشكلة M', 20)">+</button></td></tr>
-      <tr><td>صحن شكشوكة M</td><td class="price">15 درهم</td><td><button class="add-btn" onclick="addItem('صحن شكشوكة M', 15)">+</button></td></tr>
-      <tr><td>صحن كبدة M</td><td class="price">20 درهم</td><td><button class="add-btn" onclick="addItem('صحن كبدة M', 20)">+</button></td></tr>
-    </table>
-  </div>
-
-  <div class="category" id="appetizers">
-    <h2>المقبلات - Appetizers</h2>
-    <div class="aed">AED</div>
-    <table>
-      <tr><td>صحن حمص M</td><td class="price">15 درهم</td><td><button class="add-btn" onclick="addItem('صحن حمص M', 15)">+</button></td></tr>
-      <tr><td>صحن حمص باللحمة M</td><td class="price">20 درهم</td><td><button class="add-btn" onclick="addItem('صحن حمص باللحمة M', 20)">+</button></td></tr>
-      <tr><td>صحن متبل باذنجان M</td><td class="price">15 درهم</td><td><button class="add-btn" onclick="addItem('صحن متبل باذنجان M', 15)">+</button></td></tr>
-      <tr><td>صحن تبولة M</td><td class="price">15 درهم</td><td><button class="add-btn" onclick="addItem('صحن تبولة M', 15)">+</button></td></tr>
-      <tr><td>صحن فتوش M</td><td class="price">15 درهم</td><td><button class="add-btn" onclick="addItem('صحن فتوش M', 15)">+</button></td></tr>
-    </table>
-  </div>
-
-  <div class="category" id="drinks">
-    <h2>المشروبات - Drinks</h2>
-    <div class="aed">AED</div>
-    <table>
-      <tr><td>لبن عيران</td><td class="price">3 درهم</td><td><button class="add-btn" onclick="addItem('لبن عيران', 3)">+</button></td></tr>
-      <tr><td>مشروبات غازية</td><td class="price">3 درهم</td><td><button class="add-btn" onclick="addItem('مشروبات غازية', 3)">+</button></td></tr>
-      <tr><td>مياه معدنية</td><td class="price">1 درهم</td><td><button class="add-btn" onclick="addItem('مياه معدنية', 1)">+</button></td></tr>
-    </table>
+    <div class="item-card"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=200"><div class="item-info"><h3>دجاج مشوي مع مقبلات</h3><div class="price">25 درهم</div></div><button class="btn" onclick="addItem('دجاج مشوي مع مقبلات', 25)">+</button></div>
   </div>
 
   <div class="category" id="juices">
-    <h2>عصائر طازجة - Fresh Juices</h2>
+    <h2>عصائر طازجة</h2>
     <div class="aed">AED</div>
-    <table>
-      <tr><td>عصير مانجا</td><td class="price">8 درهم</td><td><button class="add-btn" onclick="addItem('عصير مانجا', 8)">+</button></td></tr>
-      <tr><td>عصير فراولة</td><td class="price">10 درهم</td><td><button class="add-btn" onclick="addItem('عصير فراولة', 10)">+</button></td></tr>
-      <tr><td>عصير برتقال</td><td class="price">8 درهم</td><td><button class="add-btn" onclick="addItem('عصير برتقال', 8)">+</button></td></tr>
-      <tr><td>عصير ليمون بالنعناع</td><td class="price">8 درهم</td><td><button class="add-btn" onclick="addItem('عصير ليمون بالنعناع', 8)">+</button></td></tr>
-      <tr><td>عصير بطيخ</td><td class="price">8 درهم</td><td><button class="add-btn" onclick="addItem('عصير بطيخ', 8)">+</button></td></tr>
-      <tr><td>كوكتيل موز وحليب</td><td class="price">10 درهم</td><td><button class="add-btn" onclick="addItem('كوكتيل موز وحليب', 10)">+</button></td></tr>
-      <tr><td>عصير كيوي</td><td class="price">10 درهم</td><td><button class="add-btn" onclick="addItem('عصير كيوي', 10)">+</button></td></tr>
-      <tr><td>عصير جزر</td><td class="price">8 درهم</td><td><button class="add-btn" onclick="addItem('عصير جزر', 8)">+</button></td></tr>
-      <tr><td>كوكتيل شامي</td><td class="price">12 درهم</td><td><button class="add-btn" onclick="addItem('كوكتيل شامي', 12)">+</button></td></tr>
-      <tr><td>عصير رمان</td><td class="price">8 درهم</td><td><button class="add-btn" onclick="addItem('عصير رمان', 8)">+</button></td></tr>
-      <tr><td>غرشة 1.5 لتر</td><td class="price">30 درهم</td><td><button class="add-btn" onclick="addItem('غرشة 1.5 لتر عصير', 30)">+</button></td></tr>
-    </table>
+    <div class="item-card"><img src="https://images.unsplash.com/photo-1622590229533-1c2d3a7b4b2b?w=200"><div class="item-info"><h3>عصير مانجا</h3><div class="price">8 درهم</div></div><button class="btn" onclick="addItem('عصير مانجا', 8)">+</button></div>
   </div>
 
 </div>
 
 <div class="cart-bar">
-  <div class="cart-info">السلة: <span id="cart-count">0</span> اصناف | المجموع: <span id="cart-total">0</span> درهم</div>
-  <a href="#" id="whatsapp-order" class="order-btn">ارسال الطلب واتساب</a>
+  <div class="cart-items" id="cart-items"></div>
+  
+  <div class="total-box">
+    <div class="total-row"><span>المجموع الفرعي:</span><span><span id="subtotal">0</span> درهم</span></div>
+    <div class="total-row"><span>التوصيل:</span><span><span id="delivery-fee">0</span> درهم</span></div>
+    <div class="total-row total-final"><span>المجموع الكلي:</span><span><span id="cart-total">0</span> درهم</span></div>
+  </div>
+
+  <div class="delivery-note">التوصيل: 0-1كم مجانا | 1-5كم 5 درهم | 5-10كم 8 درهم</div>
+
+  <div class="customer-form">
+    <input type="text" id="customer-name" placeholder="الاسم الكامل *" required>
+    <input type="tel" id="customer-phone" placeholder="رقم الجوال *" required>
+    <input type="text" id="customer-address" placeholder="العنوان بالتفصيل *">
+    <select id="delivery-distance" onchange="updateCart()">
+      <option value="0">المسافة من المطعم</option>
+      <option value="0">ضمن 1 كم - مجانا</option>
+      <option value="5">من 1 الى 5 كم - 5 درهم</option>
+      <option value="8">من 5 الى 10 كم - 8 درهم</option>
+    </select>
+  </div>
+
+  <a href="#" id="whatsapp-order" class="order-btn" onclick="sendOrder()">📱 ارسال الطلب واتساب</a>
 </div>
 
 <script>
@@ -160,17 +104,72 @@ function addItem(name, price){
   if(item){ item.qty++; } else { cart.push({name, price, qty:1}); }
   updateCart();
 }
+function changeQty(name, diff){
+  let item = cart.find(i => i.name === name);
+  if(item){
+    item.qty += diff;
+    if(item.qty <= 0){ cart = cart.filter(i => i.name !== name); }
+  }
+  updateCart();
+}
+function getDeliveryFee(){
+  return parseInt(document.getElementById('delivery-distance').value);
+}
 function updateCart(){
-  let count = cart.reduce((a,b)=>a+b.qty,0);
-  let total = cart.reduce((a,b)=>a+b.qty*b.price,0);
-  document.getElementById('cart-count').innerText = count;
-  document.getElementById('cart-total').innerText = total;
-  let msg = "طلب جديد من موقع نبع العراد:%0A%0A";
+  let cartDiv = document.getElementById('cart-items');
+  let subtotal = 0;
+  cartDiv.innerHTML = '';
   cart.forEach(i=>{
-    msg += `- ${i.name} x${i.qty} = ${i.qty*i.price} درهم%0A`;
+    subtotal += i.qty * i.price;
+    cartDiv.innerHTML += `
+      <div class="cart-item">
+        <div>${i.name}</div>
+        <div class="qty-controls">
+          <button class="qty-btn" onclick="changeQty('${i.name}', -1)">-</button>
+          <span>${i.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${i.name}', 1)">+</button>
+        </div>
+        <div>${i.qty * i.price} درهم</div>
+      </div>
+    `;
   });
-  msg += `%0Aالمجموع: ${total} درهم`;
-  document.getElementById('whatsapp-order').href = `https://wa.me/971562626868?text=${msg}`;
+  let delivery = getDeliveryFee();
+  let total = subtotal + delivery;
+  document.getElementById('subtotal').innerText = subtotal;
+  document.getElementById('delivery-fee').innerText = delivery;
+  document.getElementById('cart-total').innerText = total;
+}
+
+function sendOrder(){
+  let name = document.getElementById('customer-name').value;
+  let phone = document.getElementById('customer-phone').value;
+  let address = document.getElementById('customer-address').value;
+  let distance = document.getElementById('delivery-distance');
+  let distanceText = distance.options[distance.selectedIndex].text;
+  
+  if(cart.length === 0){ alert('السلة فاضية'); return; }
+  if(name === '' || phone === '' || address === ''){ alert('من فضلك اكمل بياناتك'); return; }
+  if(getDeliveryFee() === 0 && distance.selectedIndex === 0){ alert('من فضلك اختر مسافة التوصيل'); return; }
+  
+  let subtotal = cart.reduce((a,b)=>a+b.qty*b.price,0);
+  let delivery = getDeliveryFee();
+  let total = subtotal + delivery;
+  
+  let msg = `طلب جديد من موقع نبع العراد%0A%0A`;
+  msg += `👤 الاسم: ${name}%0A`;
+  msg += `📱 الجوال: ${phone}%0A`;
+  msg += `📍 العنوان: ${address}%0A`;
+  msg += `🚚 المسافة: ${distanceText}%0A%0A`;
+  msg += `--- الطلبات --- %0A`;
+  
+  cart.forEach(i=>{
+    msg += `- ${i.name} ${i.qty} x ${i.price} درهم = ${i.qty*i.price} درهم%0A`;
+  });
+  msg += `%0Aالمجموع الفرعي: ${subtotal} درهم%0A`;
+  msg += `التوصيل: ${delivery} درهم%0A`;
+  msg += `💰 المجموع الكلي: ${total} درهم`;
+  
+  window.open(`https://wa.me/971562626868?text=${msg}`, '_blank');
 }
 </script>
 

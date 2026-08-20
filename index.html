@@ -41,6 +41,7 @@
   .delivery-toggle button{flex:1;padding:11px;border-radius:10px;border:2px solid #ddd;background:#fff;color:var(--text);font-weight:700;cursor:pointer;}
   .delivery-toggle button.active{background:var(--main);color:#fff;border-color:var(--main);}
   #delivery-section{display:none;}
+  .location-btn{background:#4285F4;color:#fff;padding:10px;border-radius:10px;border:none;width:100%;font-weight:700;cursor:pointer;margin-bottom:10px;}
   @media(max-width:900px){.main-wrapper{flex-direction:column;}.sidebar{width:100%;position:relative;top:0;}}
 </style>
 </head>
@@ -164,7 +165,8 @@
       
       <div id="delivery-section">
         <input type="text" id="customer-area" placeholder="المنطقة * مثال: الراشدية 1">
-        <input type="text" id="customer-location" placeholder="الموقع على الخريطة / وصف المكان *">
+        <button type="button" class="location-btn" onclick="openMaps()">📍 تحديد الموقع من الخرائط</button>
+        <input type="text" id="customer-location" placeholder="رابط الموقع من الخرائط *" readonly>
         <input type="text" id="customer-house" placeholder="رقم الشقة / الفلة / المبنى *">
         <textarea id="customer-notes" placeholder="ملاحظات اضافية للمندوب" rows="2"></textarea>
         <select id="delivery-distance" onchange="updateCart()">
@@ -190,6 +192,10 @@ function setDeliveryType(type){
   if(type === 'delivery'){document.getElementById('delivery-section').style.display = 'block';} 
   else {document.getElementById('delivery-section').style.display = 'none';document.getElementById('delivery-distance').value = 0;}
   updateCart();
+}
+function openMaps(){
+  window.open('https://www.google.com/maps', '_blank');
+  alert('انسخ رابط الموقع من الخرائط والصقه في الخانة');
 }
 function addItem(name, price){let item = cart.find(i => i.name === name);if(item){ item.qty++; } else { cart.push({name, price, qty:1}); }updateCart();}
 function changeQty(name, diff){let item = cart.find(i => i.name === name);if(item){item.qty += diff;if(item.qty <= 0){ cart = cart.filter(i => i.name !== name); }}updateCart();}
@@ -230,7 +236,7 @@ function sendOrder(){
     if(notes !== '') msg += `📝 ملاحظات: ${notes}%0A`;
   }
   msg += `%0A--- الطلبات --- %0A`;
-  cart.forEach(i=>{ msg += `- ${i.name} : ${i.qty} * ${i.price} درهم = ${i.qty*i.price} درهم%0A`; });
+  cart.forEach(i=>{ msg += `- ${i.name} : ${i.price} × ${i.qty} = ${i.qty*i.price} درهم%0A`; });
   msg += `%0Aالمجموع الفرعي: ${subtotal} درهم%0A`;msg += `التوصيل: ${delivery} درهم%0A`;msg += `💰 المجموع الكلي: ${total} درهم`;
   window.open(`https://wa.me/971562626868?text=${msg}`, '_blank');
 }

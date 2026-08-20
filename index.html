@@ -3,45 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>منيو نبع العراد</title>
+<title>مطعم نبع العراد</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-  :root{--main:#D4AF37;--dark:#8B4513;--bg:#1a1a1a;--card:#2a2a2a;--text:#fff;}
+  :root{--main:#FFC107;--red:#d32f2f;--bg:#121212;--card:#1E1E1E;--text:#fff;}
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal', sans-serif;scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--text);}
-  header{background:linear-gradient(135deg,#d32f2f,#b71c1c);text-align:center;padding:20px 15px;position:sticky;top:0;z-index:100;}
-  header h1{font-size:28px;font-weight:900;color:#fff;}
-  nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:12px;}
-  nav a{background:rgba(255,255,255,0.15);padding:8px 14px;border-radius:20px;color:#fff;text-decoration:none;font-size:12px;font-weight:700;}
- .main-wrapper{display:flex;gap:20px;max-width:1300px;margin:20px auto;padding:0 15px;}
+  header{background:var(--red);text-align:center;padding:20px 15px;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.5);}
+  header h1{font-size:28px;font-weight:900;color:#fff;margin-bottom:10px;}
+  nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+  nav a{background:rgba(255,255,255,0.15);padding:8px 16px;border-radius:25px;color:#fff;text-decoration:none;font-size:13px;font-weight:700;}
+  nav a:hover{background:#fff;color:var(--red);}
+ .main-wrapper{display:flex;gap:20px;max-width:1400px;margin:20px auto;padding:0 15px;}
  .menu-content{flex:1;}
- .sidebar{width:350px;position:sticky;top:120px;height:fit-content;}
- .category-title{background:#d32f2f;color:#fff;padding:12px 18px;border-radius:12px;font-size:18px;margin-bottom:15px;font-weight:900;text-align:center;}
- .item-card{background:var(--card);padding:18px;border-radius:15px;margin-bottom:15px;}
- .item-name{font-size:18px;font-weight:900;text-align:center;margin-bottom:5px;}
- .item-name-en{font-size:14px;color:#aaa;text-align:center;margin-bottom:10px;}
+ .sidebar{width:380px;position:sticky;top:120px;height:fit-content;}
+ .category-banner{background:var(--red);color:#fff;padding:14px 18px;border-radius:12px;font-size:18px;margin-bottom:20px;font-weight:900;text-align:center;}
+ .item-card{background:var(--card);padding:20px;border-radius:15px;margin-bottom:15px;border:1px solid #333;}
+ .item-name{font-size:18px;font-weight:900;text-align:center;margin-bottom:4px;}
+ .item-name-en{font-size:13px;color:#aaa;text-align:center;margin-bottom:10px;}
  .price-main{color:#4CAF50;font-weight:900;font-size:20px;text-align:center;margin-bottom:12px;}
- .size-options{display:flex;justify-content:center;gap:10px;}
- .size-btn{background:#333;border:2px solid #555;color:#fff;border-radius:50%;width:70px;height:70px;cursor:pointer;font-weight:900;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:0.3s;}
+ .size-options{display:flex;justify-content:center;gap:10px;margin-bottom:12px;}
+ .size-btn{background:#2a2a2a;border:2px solid #444;color:#fff;border-radius:50%;width:65px;height:65px;cursor:pointer;font-weight:900;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:0.3s;}
  .size-btn:hover{border-color:var(--main);}
  .size-btn.active{background:#fff;color:#000;border-color:#fff;}
- .size-letter{font-size:18px;}
- .size-price{font-size:11px;}
- .btn-add{width:100%;background:var(--main);color:#000;border:none;padding:10px;border-radius:10px;margin-top:12px;font-weight:900;cursor:pointer;}
+ .size-letter{font-size:16px;}
+ .size-price{font-size:10px;}
+ .btn-add{width:100%;background:var(--main);color:#000;border:none;padding:12px;border-radius:10px;font-weight:900;cursor:pointer;font-size:15px;}
 
- .cart-box,.customer-form{background:var(--card);padding:18px;border-radius:15px;margin-bottom:15px;}
+ .cart-box,.customer-form{background:var(--card);padding:18px;border-radius:15px;margin-bottom:15px;border:1px solid #333;}
  .cart-box h3,.customer-form h3{color:var(--main);margin-bottom:12px;text-align:center;font-weight:900;}
- .cart-items{max-height:220px;overflow-y:auto;margin-bottom:10px;}
- .cart-item{display:flex;justify-content:space-between;align-items:center;background:#333;padding:10px 12px;border-radius:10px;margin-bottom:8px;font-size:12px;}
+ .cart-items{max-height:250px;overflow-y:auto;margin-bottom:10px;}
+ .cart-item{display:flex;justify-content:space-between;align-items:center;background:#2a2a2a;padding:10px 12px;border-radius:10px;margin-bottom:8px;font-size:12px;}
  .qty-controls{display:flex;align-items:center;gap:6px;}
  .qty-btn{background:var(--main);color:#000;border:none;padding:4px 8px;border-radius:6px;cursor:pointer;font-weight:900;}
- .total-box{background:#333;padding:12px;border-radius:10px;}
+ .total-box{background:#2a2a2a;padding:12px;border-radius:10px;}
  .total-row{display:flex;justify-content:space-between;margin-bottom:6px;font-size:14px;font-weight:700;}
  .total-final{color:var(--main);font-size:17px;font-weight:900;border-top:2px solid var(--main);padding-top:8px;}
- .customer-form input,.customer-form select,.customer-form textarea{width:100%;padding:11px;margin-bottom:10px;border-radius:10px;border:1px solid #444;background:#333;color:var(--text);}
+ .customer-form input,.customer-form select{width:100%;padding:11px;margin-bottom:10px;border-radius:10px;border:1px solid #444;background:#2a2a2a;color:var(--text);}
  .order-btn{width:100%;background:#25D366;color:#fff;padding:15px;border-radius:12px;font-weight:900;font-size:16px;border:none;cursor:pointer;}
  .delivery-toggle{display:flex;gap:8px;margin-bottom:12px;}
- .delivery-toggle button{flex:1;padding:11px;border-radius:10px;border:2px solid #555;background:#333;color:#fff;font-weight:700;cursor:pointer;}
+ .delivery-toggle button{flex:1;padding:11px;border-radius:10px;border:2px solid #444;background:#2a2a2a;color:#fff;font-weight:700;cursor:pointer;}
  .delivery-toggle button.active{background:var(--main);color:#000;border-color:var(--main);}
   #delivery-section{display:none;}
  .location-btn{background:#34A853;color:#fff;padding:10px;border-radius:10px;border:none;width:100%;font-weight:700;cursor:pointer;margin-bottom:10px;}
@@ -53,32 +54,28 @@
 <header>
   <h1>مطعم نبع العراد</h1>
   <nav>
-    <a href="#plates">صحون / Plates</a><a href="#shawarma">شورما</a><a href="#grills">مشاوي</a>
+    <a href="#plates">صحون / Plates</a>
+    <a href="#shawarma">شورما</a>
+    <a href="#grills">مشاوي</a>
+    <a href="#burgers">برجر</a>
+    <a href="#sandwiches">ساندويتشات</a>
+    <a href="#drinks">مشروبات</a>
   </nav>
 </header>
 
 <div class="main-wrapper">
   <div class="menu-content">
 
-    <div class="category-title">Appetizers مقبلات / Plates صحون</div>
+    <div class="category-banner" id="plates">صحون Plates / مقبلات Appetizers</div>
 
-    <div class="item-card" id="plates">
+    <div class="item-card">
       <div class="item-name">صحن فول</div>
       <div class="item-name-en">A Plate of Fave Beans</div>
       <div class="price-main" id="foul-price">AED 10</div>
       <div class="size-options">
-        <button class="size-btn active" onclick="selectSize('foul', 'S', 10, this)">
-          <span class="size-letter">S</span>
-          <span class="size-price">AED 10</span>
-        </button>
-        <button class="size-btn" onclick="selectSize('foul', 'M', 15, this)">
-          <span class="size-letter">M</span>
-          <span class="size-price">AED 15</span>
-        </button>
-        <button class="size-btn" onclick="selectSize('foul', 'L', 20, this)">
-          <span class="size-letter">L</span>
-          <span class="size-price">AED 20</span>
-        </button>
+        <button class="size-btn active" onclick="selectSize('foul', 'S', 10, this)"><span class="size-letter">S</span><span class="size-price">AED 10</span></button>
+        <button class="size-btn" onclick="selectSize('foul', 'M', 15, this)"><span class="size-letter">M</span><span class="size-price">AED 15</span></button>
+        <button class="size-btn" onclick="selectSize('foul', 'L', 20, this)"><span class="size-letter">L</span><span class="size-price">AED 20</span></button>
       </div>
       <button class="btn-add" onclick="addSelectedItem('foul')">اضافة للسلة +</button>
     </div>
@@ -88,21 +85,81 @@
       <div class="item-name-en">A Plate of Mixed Fried</div>
       <div class="price-main" id="makali-price">AED 15</div>
       <div class="size-options">
-        <button class="size-btn active" onclick="selectSize('makali', 'S', 15, this)">
-          <span class="size-letter">S</span>
-          <span class="size-price">AED 15</span>
-        </button>
-        <button class="size-btn" onclick="selectSize('makali', 'M', 20, this)">
-          <span class="size-letter">M</span>
-          <span class="size-price">AED 20</span>
-        </button>
-        <button class="size-btn" onclick="selectSize('makali', 'L', 25, this)">
-          <span class="size-letter">L</span>
-          <span class="size-price">AED 25</span>
-        </button>
+        <button class="size-btn active" onclick="selectSize('makali', 'S', 15, this)"><span class="size-letter">S</span><span class="size-price">AED 15</span></button>
+        <button class="size-btn" onclick="selectSize('makali', 'M', 20, this)"><span class="size-letter">M</span><span class="size-price">AED 20</span></button>
+        <button class="size-btn" onclick="selectSize('makali', 'L', 25, this)"><span class="size-letter">L</span><span class="size-price">AED 25</span></button>
       </div>
       <button class="btn-add" onclick="addSelectedItem('makali')">اضافة للسلة +</button>
     </div>
+
+    <div class="item-card">
+      <div class="item-name">صحن حمص</div>
+      <div class="item-name-en">Hummus Plate</div>
+      <div class="price-main" id="hummus-price">AED 15</div>
+      <div class="size-options">
+        <button class="size-btn active" onclick="selectSize('hummus', 'S', 15, this)"><span class="size-letter">S</span><span class="size-price">AED 15</span></button>
+        <button class="size-btn" onclick="selectSize('hummus', 'M', 20, this)"><span class="size-letter">M</span><span class="size-price">AED 20</span></button>
+        <button class="size-btn" onclick="selectSize('hummus', 'L', 25, this)"><span class="size-letter">L</span><span class="size-price">AED 25</span></button>
+      </div>
+      <button class="btn-add" onclick="addSelectedItem('hummus')">اضافة للسلة +</button>
+    </div>
+
+    <div class="item-card">
+      <div class="item-name">صحن تبولة</div>
+      <div class="item-name-en">Tabbouleh Plate</div>
+      <div class="price-main" id="tabola-price">AED 15</div>
+      <div class="size-options">
+        <button class="size-btn active" onclick="selectSize('tabola', 'S', 15, this)"><span class="size-letter">S</span><span class="size-price">AED 15</span></button>
+        <button class="size-btn" onclick="selectSize('tabola', 'M', 20, this)"><span class="size-letter">M</span><span class="size-price">AED 20</span></button>
+        <button class="size-btn" onclick="selectSize('tabola', 'L', 25, this)"><span class="size-letter">L</span><span class="size-price">AED 25</span></button>
+      </div>
+      <button class="btn-add" onclick="addSelectedItem('tabola')">اضافة للسلة +</button>
+    </div>
+
+    <div class="category-banner" id="shawarma">شورما Shawarma</div>
+
+    <div class="item-card">
+      <div class="item-name">ساندويش شاورما دجاج</div>
+      <div class="price-main" id="shawd-price">AED 11</div>
+      <div class="size-options">
+        <button class="size-btn active" onclick="selectSize('shawd', 'S', 9, this)"><span class="size-letter">S</span><span class="size-price">AED 9</span></button>
+        <button class="size-btn" onclick="selectSize('shawd', 'M', 11, this)"><span class="size-letter">M</span><span class="size-price">AED 11</span></button>
+        <button class="size-btn" onclick="selectSize('shawd', 'L', 13, this)"><span class="size-letter">L</span><span class="size-price">AED 13</span></button>
+      </div>
+      <button class="btn-add" onclick="addSelectedItem('shawd')">اضافة للسلة +</button>
+    </div>
+
+    <div class="item-card">
+      <div class="item-name">ساندويش شاورما لحم</div>
+      <div class="price-main" id="shawn-price">AED 12</div>
+      <div class="size-options">
+        <button class="size-btn active" onclick="selectSize('shawn', 'S', 10, this)"><span class="size-letter">S</span><span class="size-price">AED 10</span></button>
+        <button class="size-btn" onclick="selectSize('shawn', 'M', 12, this)"><span class="size-letter">M</span><span class="size-price">AED 12</span></button>
+        <button class="size-btn" onclick="selectSize('shawn', 'L', 14, this)"><span class="size-letter">L</span><span class="size-price">AED 14</span></button>
+      </div>
+      <button class="btn-add" onclick="addSelectedItem('shawn')">اضافة للسلة +</button>
+    </div>
+
+    <div class="item-card"><div class="item-name">وجبة عربي دجاج</div><div class="item-name-en">Arabic Meal Chicken</div><div class="price-main">AED 22</div><button class="btn-add" onclick="addItem('وجبة عربي دجاج', 22)">اضافة للسلة +</button></div>
+    <div class="item-card"><div class="item-name">وجبة عربي لحم</div><div class="item-name-en">Arabic Meal Meat</div><div class="price-main">AED 26</div><button class="btn-add" onclick="addItem('وجبة عربي لحم', 26)">اضافة للسلة +</button></div>
+
+    <div class="category-banner" id="grills">المشاوي Grills</div>
+    <div class="item-card"><div class="item-name">دجاج مشوي مع مقبلات</div><div class="price-main">AED 25</div><button class="btn-add" onclick="addItem('دجاج مشوي مع مقبلات', 25)">اضافة للسلة +</button></div>
+    <div class="item-card"><div class="item-name">نصف دجاجة مشوية</div><div class="price-main">AED 15</div><button class="btn-add" onclick="addItem('نصف دجاجة مشوية', 15)">اضافة للسلة +</button></div>
+    <div class="item-card"><div class="item-name">1 كيلو مشاوي مشكلة</div><div class="price-main">AED 65</div><button class="btn-add" onclick="addItem('1 كيلو مشاوي مشكلة', 65)">اضافة للسلة +</button></div>
+
+    <div class="category-banner" id="burgers">البرجر Burgers</div>
+    <div class="item-card"><div class="item-name">برجر دجاج</div><div class="price-main">AED 10</div><button class="btn-add" onclick="addItem('برجر دجاج', 10)">اضافة للسلة +</button></div>
+    <div class="item-card"><div class="item-name">برجر لحم</div><div class="price-main">AED 10</div><button class="btn-add" onclick="addItem('برجر لحم', 10)">اضافة للسلة +</button></div>
+
+    <div class="category-banner" id="sandwiches">الساندويتشات Sandwiches</div>
+    <div class="item-card"><div class="item-name">ساندويش فلافل</div><div class="price-main">AED 8</div><button class="btn-add" onclick="addItem('ساندويش فلافل', 8)">اضافة للسلة +</button></div>
+    <div class="item-card"><div class="item-name">ساندويش كباب</div><div class="price-main">AED 15</div><button class="btn-add" onclick="addItem('ساندويش كباب', 15)">اضافة للسلة +</button></div>
+
+    <div class="category-banner" id="drinks">المشروبات Drinks</div>
+    <div class="item-card"><div class="item-name">لبن عيران</div><div class="price-main">AED 3</div><button class="btn-add" onclick="addItem('لبن عيران', 3)">اضافة للسلة +</button></div>
+    <div class="item-card"><div class="item-name">مشروبات غازية</div><div class="price-main">AED 3</div><button class="btn-add" onclick="addItem('مشروبات غازية', 3)">اضافة للسلة +</button></div>
+    <div class="item-card"><div class="item-name">مياه معدنية</div><div class="price-main">AED 1</div><button class="btn-add" onclick="addItem('مياه معدنية', 1)">اضافة للسلة +</button></div>
 
   </div>
 
@@ -111,17 +168,17 @@
       <h3>سلة الطلبات</h3>
       <div class="cart-items" id="cart-items"></div>
       <div class="total-box">
-        <div class="total-row"><span>المجموع الفرعي:</span><span><span id="subtotal">0</span> درهم</span></div>
-        <div class="total-row"><span>التوصيل:</span><span><span id="delivery-fee">0</span> درهم</span></div>
-        <div class="total-row total-final"><span>المجموع الكلي:</span><span><span id="cart-total">0</span> درهم</span></div>
+        <div class="total-row"><span>المجموع الفرعي</span><span><span id="subtotal">0</span> درهم</span></div>
+        <div class="total-row"><span>التوصيل</span><span><span id="delivery-fee">0</span> درهم</span></div>
+        <div class="total-row total-final"><span>المجموع الكلي</span><span><span id="cart-total">0</span> درهم</span></div>
       </div>
     </div>
 
     <div class="customer-form">
       <h3>بيانات الطلب</h3>
       <div class="delivery-toggle">
-        <button id="pickup-btn" onclick="setDeliveryType('pickup')">استلام</button>
         <button id="delivery-btn" class="active" onclick="setDeliveryType('delivery')">توصيل</button>
+        <button id="pickup-btn" onclick="setDeliveryType('pickup')">استلام</button>
       </div>
       <input type="text" id="customer-name" placeholder="الاسم الكامل *" required>
       <input type="tel" id="customer-phone" placeholder="رقم الجوال *" required>
@@ -147,7 +204,11 @@
 let cart = [];let deliveryType = 'delivery';
 let selectedItems = {
   foul: {name: 'صحن فول', size: 'S', price: 10},
-  makali: {name: 'صحن مقالي مشكلة', size: 'S', price: 15}
+  makali: {name: 'صحن مقالي مشكلة', size: 'S', price: 15},
+  hummus: {name: 'صحن حمص', size: 'S', price: 15},
+  tabola: {name: 'صحن تبولة', size: 'S', price: 15},
+  shawd: {name: 'ساندويش شاورما دجاج', size: 'S', price: 9},
+  shawn: {name: 'ساندويش شاورما لحم', size: 'S', price: 10}
 };
 
 function setDeliveryType(type){
@@ -214,7 +275,7 @@ function sendOrder(){
   let subtotal = cart.reduce((a,b)=>a+b.qty*b.price,0);
   let delivery = getDeliveryFee();let total = subtotal + delivery;
 
-  let msg = `طلب جديد%0A%0A👤 ${name}%0A📱 ${phone}%0A🚚 ${distanceText}%0A`;
+  let msg = `طلب جديد من نبع العراد%0A%0A👤 ${name}%0A📱 ${phone}%0A🚚 ${distanceText}%0A`;
   if(deliveryType === 'delivery') msg += `📍 ${area}%0A🗺️ ${location}%0A🏠 ${house}%0A`;
   msg += `%0A--- الطلبات --- %0A`;
   cart.forEach(i=>{ msg += `- ${i.name} : ${i.price} × ${i.qty} = ${i.qty*i.price} درهم%0A`; });

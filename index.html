@@ -3,160 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مطعم نبع العراد</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+<title>نبع العراد - عجمان</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-  :root{--main:#D4AF37;--dark:#8B4513;--bg:#FFFAF0;--card:#FFFFFF;--text:#333;}
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal', sans-serif;scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--text);}
-  header{background:linear-gradient(135deg,#D4AF37,#8B4513);text-align:center;padding:30px 15px;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
-  header h1{font-size:34px;font-weight:900;color:#fff;margin-bottom:6px;}
-  header p{color:#fff;font-size:15px;opacity:0.95;}
-  nav{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
-  nav a{background:rgba(255,255,255,0.25);padding:9px 18px;border-radius:25px;color:#fff;text-decoration:none;font-size:14px;font-weight:700;border:1px solid rgba(255,255,255,0.3);cursor:pointer;}
-  nav a:hover{background:#fff;color:var(--dark);}
-.main-wrapper{display:flex;gap:20px;max-width:1400px;margin:25px auto;padding:0 15px;}
-.menu-content{flex:1;}
-.sidebar{width:380px;position:sticky;top:130px;height:fit-content;}
-.category-banner{background:var(--main);color:#fff;padding:15px 20px;border-radius:12px;font-size:21px;margin-bottom:20px;font-weight:900;text-align:center;box-shadow:0 3px 10px rgba(212,175,55,0.3);}
-.item-card{background:var(--card);padding:20px;border-radius:15px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid #eee;text-align:center;}
-.item-name{font-size:18px;font-weight:900;margin-bottom:8px;color:var(--dark);}
-.price-main{color:var(--main);font-weight:900;font-size:18px;margin-bottom:12px;}
-.size-options{display:flex;justify-content:center;gap:10px;margin-bottom:12px;}
-.size-btn{background:#f5f5f5;border:2px solid #ddd;color:var(--text);border-radius:50%;width:55px;height:55px;cursor:pointer;font-weight:900;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:0.3s;font-size:12px;}
-.size-btn.active{background:var(--main);color:#fff;border-color:var(--main);}
-.btn-add{width:100%;background:var(--main);color:#fff;border:none;padding:12px;border-radius:10px;font-weight:900;cursor:pointer;font-size:15px;transition:0.3s;}
-.btn-add:hover{background:var(--dark);}
-
-.cart-box,.customer-form{background:var(--card);padding:18px;border-radius:15px;margin-bottom:15px;box-shadow:0 3px 12px rgba(0,0,0,0.05);border:1px solid #eee;}
-.cart-box h3,.customer-form h3{color:var(--dark);margin-bottom:12px;text-align:center;font-weight:900;font-size:18px;}
-.cart-items{max-height:250px;overflow-y:auto;margin-bottom:10px;}
-.cart-item{display:flex;justify-content:space-between;align-items:center;background:var(--bg);padding:10px;border-radius:10px;margin-bottom:8px;font-size:12px;}
-.qty-controls{display:flex;align-items:center;gap:6px;}
-.qty-btn{background:var(--main);color:#fff;border:none;padding:4px 8px;border-radius:6px;cursor:pointer;font-weight:900;}
-.total-row{display:flex;justify-content:space-between;margin-bottom:8px;font-size:14px;font-weight:700;}
-.total-final{color:var(--dark);font-size:16px;font-weight:900;border-top:2px solid var(--main);padding-top:8px;}
-.delivery-note{font-size:11px;color:var(--dark);text-align:center;margin:8px 0;font-weight:700;}
-.customer-form input,.customer-form select{width:100%;padding:11px;margin-bottom:10px;border-radius:10px;border:1px solid #ddd;background:#fff;color:var(--text);}
-.order-btn{width:100%;background:#25D366;color:#fff;padding:15px;border-radius:12px;font-weight:900;font-size:16px;border:none;cursor:pointer;transition:0.3s;}
-.order-btn:hover{background:#128C7E;}
-.delivery-toggle{display:flex;gap:8px;margin-bottom:12px;}
-.delivery-toggle button{flex:1;padding:11px;border-radius:10px;border:2px solid #ddd;background:#fff;color:var(--text);font-weight:700;cursor:pointer;}
-.delivery-toggle button.active{background:var(--main);color:#fff;border-color:var(--main);}
-  #delivery-section{display:block;}
-.location-btn{background:#4285F4;color:#fff;padding:10px;border-radius:10px;border:none;width:100%;font-weight:700;cursor:pointer;margin-bottom:10px;}
-  @media(max-width:900px){.main-wrapper{flex-direction:column;}.sidebar{width:100%;position:relative;top:0;}}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
+body{background:#F5EFE6;color:#4E3629;padding:10px;padding-bottom:380px}
+.header{text-align:center;padding:22px;background:#FFFDF9;border-radius:22px;margin-bottom:14px;border:1px solid #E8DCCF}
+.header h1{font-size:27px;color:#4E3629}.header p{font-size:12px;color:#A68B77;line-height:1.8}
+.cat{background:#4E3629;color:#F5EFE6;padding:10px 16px;border-radius:12px;font-weight:800;margin:24px 0 12px}
+.item{background:#FFFDF9;border:1px solid #E8DCCF;border-radius:18px;padding:13px;display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}
+.item-info h3{font-size:14px;font-weight:800;color:#4E3629}.en{font-size:11px;color:#BCA89A}
+.price{color:#8B5E3C;font-weight:800;font-size:13px;margin-top:4px}
+.sizes{display:flex;gap:6px;margin-top:9px}
+.size{border:1px solid #E8DCCF;padding:5px 12px;border-radius:20px;font-size:11px;cursor:pointer;background:#F5EFE6;color:#8B5E3C;font-weight:700}
+.size.active{background:#4E3629;color:#FFFDF9;border-color:#4E3629}
+.qty{display:flex;align-items:center;gap:8px;background:#F5EFE6;border-radius:22px;padding:4px 9px;border:1px solid #E8DCCF}
+.qty button{width:28px;height:28px;border:none;background:#4E3629;color:#FFFDF9;border-radius:50%;font-size:18px;cursor:pointer}
+.qty span{font-weight:800;min-width:16px;text-align:center;font-size:14px}
+.form{background:#FFFDF9;border-radius:22px;padding:16px;margin-top:24px;border:1px solid #E8DCCF}
+.form h3{font-size:15px;margin-bottom:12px;color:#4E3629}
+.form input,.form select{width:100%;padding:12px;border-radius:12px;border:1px solid #E8DCCF;background:#F5EFE6;color:#4E3629;margin-bottom:10px;font-size:14px;outline:none}
+.row{display:flex;gap:10px}.row>*{flex:1}
+#map{width:100%;height:210px;border-radius:14px;margin-bottom:10px;z-index:1;border:1px solid #E8DCCF}
+.loc-btn{width:100%;background:#EFE6D9;color:#4E3629;border:1px dashed #8B5E3C;padding:11px;border-radius:12px;font-weight:700;margin-bottom:10px;cursor:pointer}
+.delivery-toggle{display:flex;gap:8px;margin-bottom:12px}
+.delivery-toggle button{flex:1;padding:12px;border-radius:12px;border:1px solid #E8DCCF;background:#F5EFE6;color:#4E3629;font-weight:800;cursor:pointer}
+.delivery-toggle button.active{background:#4E3629;color:#FFFDF9;border-color:#4E3629}
+.infoBox{background:#F5EFE6;border:1px dashed #8B5E3C;border-radius:12px;padding:10px;font-size:12px;color:#4E3629;margin-bottom:10px;text-align:center;line-height:1.8}
+#cart{position:fixed;bottom:0;left:0;right:0;background:#FFFDF9;border-top:1px solid #E8DCCF;padding:14px;border-radius:26px 26px 0 0;z-index:99;box-shadow:0 -6px 30px rgba(78,54,41,0.12)}
+.line{display:flex;justify-content:space-between;font-size:12px;color:#A68B77;margin-bottom:4px}
+.line.total{color:#4E3629;font-size:17px;font-weight:800;border-top:1px dashed #E8DCCF;padding-top:8px;margin-top:6px}
+#sendBtn{width:100%;margin-top:12px;background:#4E3629;color:#FFFDF9;border:none;padding:15px;border-radius:14px;font-size:16px;font-weight:800}
+#sendBtn:disabled{background:#EFE6D9;color:#BCA89A}
 </style>
 </head>
 <body>
 
-<header>
-  <h1>مطعم نبع العراد</h1>
-  <p>اطيب النكهات الشامية في عجمان</p>
-  <nav>
-    <a href="#plates">صحون</a><a href="#appetizers">مقبلات</a><a href="#shawarma">شورما</a>
-    <a href="#grills">مشاوي</a><a href="#burgers">برجر</a><a href="#sandwiches">ساندويتشات</a>
-    <a href="#juices">عصائر</a><a href="#drinks">مشروبات</a>
-  </nav>
-</header>
+<div class="header"><h1>نبع العراد</h1><p>عجمان - توصيل سريع<br>📞 0589059844 | 0562626868</p></div>
+<div id="menu"></div>
 
-<div class="main-wrapper">
-  <div class="menu-content">
+<div class="form">
+<h3>📍 بيانات الطلب</h3>
 
-    <!-- 1. الصحون -->
-    <div class="category-banner" id="plates">صحون</div>
-    <div class="item-card"><div class="item-name">صحن فول</div><div class="price-main" id="foul-price">AED 10</div><div class="size-options"><button class="size-btn active" onclick="selectSize('foul', 'S', 10, this)"><span>S</span><span>10</span></button><button class="size-btn" onclick="selectSize('foul', 'M', 15, this)"><span>M</span><span>15</span></button><button class="size-btn" onclick="selectSize('foul', 'L', 20, this)"><span>L</span><span>20</span></button></div><button class="btn-add" onclick="addSelectedItem('foul')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن مقالي مشكلة</div><div class="price-main" id="makali-price">AED 15</div><div class="size-options"><button class="size-btn active" onclick="selectSize('makali', 'S', 15, this)"><span>S</span><span>15</span></button><button class="size-btn" onclick="selectSize('makali', 'M', 20, this)"><span>M</span><span>20</span></button><button class="size-btn" onclick="selectSize('makali', 'L', 25, this)"><span>L</span><span>25</span></button></div><button class="btn-add" onclick="addSelectedItem('makali')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن شكشوكة</div><div class="price-main" id="shak-price">AED 12</div><div class="size-options"><button class="size-btn active" onclick="selectSize('shak', 'S', 12, this)"><span>S</span><span>12</span></button><button class="size-btn" onclick="selectSize('shak', 'M', 15, this)"><span>M</span><span>15</span></button><button class="size-btn" onclick="selectSize('shak', 'L', 20, this)"><span>L</span><span>20</span></button></div><button class="btn-add" onclick="addSelectedItem('shak')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن كبدة</div><div class="price-main" id="kibda-price">AED 15</div><div class="size-options"><button class="size-btn active" onclick="selectSize('kibda', 'S', 15, this)"><span>S</span><span>15</span></button><button class="size-btn" onclick="selectSize('kibda', 'M', 20, this)"><span>M</span><span>20</span></button><button class="size-btn" onclick="selectSize('kibda', 'L', 25, this)"><span>L</span><span>25</span></button></div><button class="btn-add" onclick="addSelectedItem('kibda')">+ اضافة للسلة</button></div>
+<div class="delivery-toggle">
+<button id="btnDelivery" class="active" onclick="setDeliveryType('delivery')">🚚 توصيل</button>
+<button id="btnPickup" onclick="setDeliveryType('pickup')">🏃‍♂️ استلام من المطعم</button>
+</div>
 
-    <!-- 2. المقبلات -->
-    <div class="category-banner" id="appetizers">مقبلات</div>
-    <div class="item-card"><div class="item-name">صحن حمص</div><div class="price-main" id="hummus-price">AED 10</div><div class="size-options"><button class="size-btn active" onclick="selectSize('hummus', 'S', 10, this)"><span>S</span><span>10</span></button><button class="size-btn" onclick="selectSize('hummus', 'M', 15, this)"><span>M</span><span>15</span></button><button class="size-btn" onclick="selectSize('hummus', 'L', 20, this)"><span>L</span><span>20</span></button></div><button class="btn-add" onclick="addSelectedItem('hummus')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن حمص باللحمة</div><div class="price-main" id="hummusl-price">AED 15</div><div class="size-options"><button class="size-btn active" onclick="selectSize('hummusl', 'S', 15, this)"><span>S</span><span>15</span></button><button class="size-btn" onclick="selectSize('hummusl', 'M', 20, this)"><span>M</span><span>20</span></button><button class="size-btn" onclick="selectSize('hummusl', 'L', 25, this)"><span>L</span><span>25</span></button></div><button class="btn-add" onclick="addSelectedItem('hummusl')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن متبل باذنجان</div><div class="price-main" id="mutabel-price">AED 10</div><div class="size-options"><button class="size-btn active" onclick="selectSize('mutabel', 'S', 10, this)"><span>S</span><span>10</span></button><button class="size-btn" onclick="selectSize('mutabel', 'M', 15, this)"><span>M</span><span>15</span></button><button class="size-btn" onclick="selectSize('mutabel', 'L', 20, this)"><span>L</span><span>20</span></button></div><button class="btn-add" onclick="addSelectedItem('mutabel')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن تبولة</div><div class="price-main" id="tabola-price">AED 12</div><div class="size-options"><button class="size-btn active" onclick="selectSize('tabola', 'S', 12, this)"><span>S</span><span>12</span></button><button class="size-btn" onclick="selectSize('tabola', 'M', 15, this)"><span>M</span><span>15</span></button><button class="size-btn" onclick="selectSize('tabola', 'L', 20, this)"><span>L</span><span>20</span></button></div><button class="btn-add" onclick="addSelectedItem('tabola')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن فتوش</div><div class="price-main" id="fattoush-price">AED 12</div><div class="size-options"><button class="size-btn active" onclick="selectSize('fattoush', 'S', 12, this)"><span>S</span><span>12</span></button><button class="size-btn" onclick="selectSize('fattoush', 'M', 15, this)"><span>M</span><span>15</span></button><button class="size-btn" onclick="selectSize('fattoush', 'L', 20, this)"><span>L</span><span>20</span></button></div><button class="btn-add" onclick="addSelectedItem('fattoush')">+ اضافة للسلة</button></div>
+<div id="deliverySection">
+<input id="area" placeholder="اسم المنطقة - مثلا النعيمية *">
+<div class="row"><select id="btype"><option value="فيلا">فيلا</option><option value="بناية">بناية</option></select><input id="bnum" placeholder="رقم الفيلا / البناية *"></div>
+<input id="apt" placeholder="رقم الشقة / الطابق (اختياري)">
+<h3 style="margin-top:12px">📌 حدد موقعك على الخريطة لحساب التوصيل</h3>
+<div id="map"></div>
+<button class="loc-btn" onclick="getMyLocation()">📍 استخدم موقعي الحالي</button>
+<div class="infoBox" id="distanceInfo">📏 حدد موقعك على الخريطة لحساب سعر التوصيل<br>ضمن 1 كم مجاناً | 1-5 كم = 5 درهم | 5-10 كم = 8 درهم</div>
+<input id="locLink" placeholder="رابط موقعك سيظهر هنا" readonly>
+</div>
 
-    <!-- 3. الشورما -->
-    <div class="category-banner" id="shawarma">شورما</div>
-    <div class="item-card"><div class="item-name">ساندويش شاورما دجاج</div><div class="price-main" id="shawd-price">AED 7</div><div class="size-options"><button class="size-btn active" onclick="selectSize('shawd', 'S', 7, this)"><span>S</span><span>7</span></button><button class="size-btn" onclick="selectSize('shawd', 'M', 9, this)"><span>M</span><span>9</span></button><button class="size-btn" onclick="selectSize('shawd', 'L', 11, this)"><span>L</span><span>11</span></button></div><button class="btn-add" onclick="addSelectedItem('shawd')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش شاورما لحم</div><div class="price-main" id="shawn-price">AED 8</div><div class="size-options"><button class="size-btn active" onclick="selectSize('shawn', 'S', 8, this)"><span>S</span><span>8</span></button><button class="size-btn" onclick="selectSize('shawn', 'M', 10, this)"><span>M</span><span>10</span></button><button class="size-btn" onclick="selectSize('shawn', 'L', 12, this)"><span>L</span><span>12</span></button></div><button class="btn-add" onclick="addSelectedItem('shawn')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">وجبة عربي دجاج</div><div class="price-main" id="arabiD-price">AED 15</div><div class="size-options"><button class="size-btn active" onclick="selectSize('arabiD', 'S', 15, this)"><span>S</span><span>15</span></button><button class="size-btn" onclick="selectSize('arabiD', 'M', 22, this)"><span>M</span><span>22</span></button><button class="size-btn" onclick="selectSize('arabiD', 'L', 26, this)"><span>L</span><span>26</span></button></div><button class="btn-add" onclick="addSelectedItem('arabiD')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">وجبة عربي لحم</div><div class="price-main" id="arabiL-price">AED 18</div><div class="size-options"><button class="size-btn active" onclick="selectSize('arabiL', 'S', 18, this)"><span>S</span><span>18</span></button><button class="size-btn" onclick="selectSize('arabiL', 'M', 26, this)"><span>M</span><span>26</span></button><button class="size-btn" onclick="selectSize('arabiL', 'L', 30, this)"><span>L</span><span>30</span></button></div><button class="btn-add" onclick="addSelectedItem('arabiL')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن شاورما دجاج</div><div class="price-main" id="plateD-price">AED 7</div><div class="size-options"><button class="size-btn active" onclick="selectSize('plateD', 'S', 7, this)"><span>S</span><span>7</span></button><button class="size-btn" onclick="selectSize('plateD', 'M', 15, this)"><span>M</span><span>15</span></button><button class="size-btn" onclick="selectSize('plateD', 'L', 25, this)"><span>L</span><span>25</span></button></div><button class="btn-add" onclick="addSelectedItem('plateD')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن شاورما لحم</div><div class="price-main" id="plateL-price">AED 7</div><div class="size-options"><button class="size-btn active" onclick="selectSize('plateL', 'S', 7, this)"><span>S</span><span>7</span></button><button class="size-btn" onclick="selectSize('plateL', 'M', 17, this)"><span>M</span><span>17</span></button><button class="size-btn" onclick="selectSize('plateL', 'L', 30, this)"><span>L</span><span>30</span></button></div><button class="btn-add" onclick="addSelectedItem('plateL')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن بطاطا</div><div class="price-main" id="potato-price">AED 5</div><div class="size-options"><button class="size-btn active" onclick="selectSize('potato', 'S', 5, this)"><span>S</span><span>5</span></button><button class="size-btn" onclick="selectSize('potato', 'M', 10, this)"><span>M</span><span>10</span></button><button class="size-btn" onclick="selectSize('potato', 'L', 15, this)"><span>L</span><span>15</span></button></div><button class="btn-add" onclick="addSelectedItem('potato')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن بطاطا بالجبنة</div><div class="price-main" id="potatoc-price">AED 7</div><div class="size-options"><button class="size-btn active" onclick="selectSize('potatoc', 'S', 7, this)"><span>S</span><span>7</span></button><button class="size-btn" onclick="selectSize('potatoc', 'M', 12, this)"><span>M</span><span>12</span></button><button class="size-btn" onclick="selectSize('potatoc', 'L', 17, this)"><span>L</span><span>17</span></button></div><button class="btn-add" onclick="addSelectedItem('potatoc')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن شاورما دجاج مع حمص</div><div class="price-main">AED 30</div><button class="btn-add" onclick="addItem('صحن شاورما دجاج مع حمص', 30)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صحن شاورما لحم مع حمص</div><div class="price-main">AED 35</div><button class="btn-add" onclick="addItem('صحن شاورما لحم مع حمص', 35)">+ اضافة للسلة</button></div>
+<input id="phone" placeholder="رقم الموبايل *">
 
-    <!-- 4. المشاوي -->
-    <div class="category-banner" id="grills">مشاوي</div>
-    <div class="item-card"><div class="item-name">دجاج ماكينة مع مقبلات</div><div class="price-main">AED 25</div><button class="btn-add" onclick="addItem('دجاج ماكينة مع مقبلات', 25)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">نصف دجاجة ماكينة مع مقبلات</div><div class="price-main">AED 15</div><button class="btn-add" onclick="addItem('نصف دجاجة ماكينة', 15)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">1 كيلو مشاوي مشكلة</div><div class="price-main">AED 65</div><button class="btn-add" onclick="addItem('1 كيلو مشاوي مشكلة', 65)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">1 كيلو كباب مع تكة لحم</div><div class="price-main">AED 75</div><button class="btn-add" onclick="addItem('1 كيلو كباب مع تكة', 75)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">1 كيلو شيش طاووق</div><div class="price-main">AED 60</div><button class="btn-add" onclick="addItem('1 كيلو شيش طاووق', 60)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">صينية مشاوي مشكلة 3 كغ</div><div class="price-main">AED 160</div><button class="btn-add" onclick="addItem('صينية مشاوي 3 كغ', 160)">+ اضافة للسلة</button></div>
+</div>
 
-    <!-- 5. البرجر -->
-    <div class="category-banner" id="burgers">برجر</div>
-    <div class="item-card"><div class="item-name">برجر دجاج</div><div class="price-main">AED 10</div><button class="btn-add" onclick="addItem('برجر دجاج', 10)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">برجر لحم</div><div class="price-main">AED 10</div><button class="btn-add" onclick="addItem('برجر لحم', 10)">+ اضافة للسلة</button></div>
+<div id="cart">
+<div class="line"><span id="count">0 صنف</span><span id="sub">0 AED</span></div>
+<div class="line"><span id="deliveryLabel">توصيل</span><span id="deliveryCost">0 AED</span></div>
+<div class="line total"><span>المجموع الكلي</span><span id="grand">0 AED</span></div>
+<button id="sendBtn" disabled onclick="sendWA()">أضف طلب أولاً</button>
+</div>
 
-    <!-- 6. الساندويتشات -->
-    <div class="category-banner" id="sandwiches">ساندويتشات</div>
-    <div class="item-card"><div class="item-name">ساندويش كباب لحم</div><div class="price-main" id="kebabL-price">AED 10</div><div class="size-options"><button class="size-btn active" onclick="selectSize('kebabL', 'S', 10, this)"><span>S</span><span>10</span></button><button class="size-btn" onclick="selectSize('kebabL', 'L', 15, this)"><span>L</span><span>15</span></button></div><button class="btn-add" onclick="addSelectedItem('kebabL')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش كباب دجاج</div><div class="price-main" id="kebabD-price">AED 8</div><div class="size-options"><button class="size-btn active" onclick="selectSize('kebabD', 'S', 8, this)"><span>S</span><span>8</span></button><button class="size-btn" onclick="selectSize('kebabD', 'L', 12, this)"><span>L</span><span>12</span></button></div><button class="btn-add" onclick="addSelectedItem('kebabD')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش شيش طاووق</div><div class="price-main" id="shish-price">AED 8</div><div class="size-options"><button class="size-btn active" onclick="selectSize('shish', 'S', 8, this)"><span>S</span><span>8</span></button><button class="size-btn" onclick="selectSize('shish', 'L', 10, this)"><span>L</span><span>10</span></button></div><button class="btn-add" onclick="addSelectedItem('shish')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش فاهيتا</div><div class="price-main" id="fajita-price">AED 8</div><div class="size-options"><button class="size-btn active" onclick="selectSize('fajita', 'S', 8, this)"><span>S</span><span>8</span></button><button class="size-btn" onclick="selectSize('fajita', 'L', 12, this)"><span>L</span><span>12</span></button></div><button class="btn-add" onclick="addSelectedItem('fajita')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش فلافل</div><div class="price-main" id="falafel-price">AED 5</div><div class="size-options"><button class="size-btn active" onclick="selectSize('falafel', 'S', 5, this)"><span>S</span><span>5</span></button><button class="size-btn" onclick="selectSize('falafel', 'L', 8, this)"><span>L</span><span>8</span></button></div><button class="btn-add" onclick="addSelectedItem('falafel')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش فول</div><div class="price-main" id="fouls-price">AED 5</div><div class="size-options"><button class="size-btn active" onclick="selectSize('fouls', 'S', 5, this)"><span>S</span><span>5</span></button><button class="size-btn" onclick="selectSize('fouls', 'L', 10, this)"><span>L</span><span>10</span></button></div><button class="btn-add" onclick="addSelectedItem('fouls')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش بطاطا</div><div class="price-main" id="potatos-price">AED 5</div><div class="size-options"><button class="size-btn active" onclick="selectSize('potatos', 'S', 5, this)"><span>S</span><span>5</span></button><button class="size-btn" onclick="selectSize('potatos', 'L', 10, this)"><span>L</span><span>10</span></button></div><button class="btn-add" onclick="addSelectedItem('potatos')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش مسحب</div><div class="price-main" id="masab-price">AED 8</div><div class="size-options"><button class="size-btn active" onclick="selectSize('masab', 'S', 8, this)"><span>S</span><span>8</span></button><button class="size-btn" onclick="selectSize('masab', 'L', 12, this)"><span>L</span><span>12</span></button></div><button class="btn-add" onclick="addSelectedItem('masab')">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش فيلادلفيا</div><div class="price-main">AED 12</div><button class="btn-add" onclick="addItem('ساندويش فيلادلفيا', 12)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش سجق</div><div class="price-main">AED 12</div><button class="btn-add" onclick="addItem('ساندويش سجق', 12)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش فلافل مشكل</div><div class="price-main">AED 11</div><button class="btn-add" onclick="addItem('ساندويش فلافل مشكل', 11)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش مقالي مشكلة</div><div class="price-main">AED 11</div><button class="btn-add" onclick="addItem('ساندويش مقالي مشكلة', 11)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش كبدة دجاج</div><div class="price-main">AED 12</div><button class="btn-add" onclick="addItem('ساندويش كبدة دجاج', 12)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش حمص باللحمة</div><div class="price-main">AED 16</div><button class="btn-add" onclick="addItem('ساندويش حمص باللحمة', 16)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">ساندويش شكشوكة</div><div class="price-main">AED 12</div><button class="btn-add" onclick="addItem('ساندويش شكشوكة', 12)">+ اضافة للسلة</button></div>
+<script>
+let waNumber = "971562626868";
+// موقع المطعم - عجمان (تقدر تغيره لموقعك الدقيق)
+let restaurantLocation = {lat: 25.4052, lng: 55.5136};
+let deliveryType = 'delivery';
+let deliveryFee = 0;
+let distanceKm = 0;
+let currentLatLng=null, map, marker;
 
-    <!-- 7. العصائر -->
-    <div class="category-banner" id="juices">عصائر طازجة</div>
-    <div class="item-card"><div class="item-name">عصير مانجا</div><div class="price-main">AED 8</div><button class="btn-add" onclick="addItem('عصير مانجا', 8)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">عصير فراولة</div><div class="price-main">AED 10</div><button class="btn-add" onclick="addItem('عصير فراولة', 10)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">عصير برتقال</div><div class="price-main">AED 8</div><button class="btn-add" onclick="addItem('عصير برتقال', 8)">+ اضافة للسلة</button></div>
+function setDeliveryType(type){
+  deliveryType = type;
+  document.getElementById('btnDelivery').classList.toggle('active', type==='delivery');
+  document.getElementById('btnPickup').classList.toggle('active', type==='pickup');
+  document.getElementById('deliverySection').style.display = type==='delivery'? 'block' : 'none';
+  if(type==='pickup'){
+    deliveryFee = 0;
+    document.getElementById('deliveryLabel').innerText = 'توصيل (استلام)';
+    document.getElementById('deliveryCost').innerText = '0 AED';
+  } else {
+    calcDelivery();
+  }
+  updateCart();
+}
 
-    <!-- 8. المشروبات -->
-    <div class="category-banner" id="drinks">مشروبات</div>
-    <div class="item-card"><div class="item-name">مياه</div><div class="price-main">AED 1</div><button class="btn-add" onclick="addItem('مياه', 1)">+ اضافة للسلة</button></div>
-    <div class="item-card"><div class="item-name">بيبسي</div><div class="price-main">AED 3</div><button class="btn-add" onclick="addItem('بيبسي', 3)">+ اضافة للسلة</button></div>
-  </div>
+function getDistance(lat1, lon1, lat2, lon2) {
+  let R = 6371;
+  let dLat = (lat2-lat1)*Math.PI/180;
+  let dLon = (lon2-lon1)*Math.PI/180;
+  let a = Math.sin(dLat/2)*Math.sin(dLat/2) + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)*Math.sin(dLon/2);
+  let c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R * c;
+}
 
-  <!-- السايدبار -->
-  <div class="sidebar">
-    <div class="cart-box">
-      <h3>سلة الطلبات</h3>
-      <div class="total-row"><span>المجموع الفرعي</span><span><span id="subtotal">0</span> درهم</span></div>
-      <div class="total-row"><span>التوصيل</span><span><span id="delivery-fee">0</span> درهم</span></div>
-      <div class="total-row total-final"><span>المجموع الكلي</span><span><span id="cart-total">0</span> درهم</span></div>
-      <p class="delivery-note">* التوصيل المجاني للطلبات فوق 50 درهم</p>
-      <div class="cart-items" id="cart-items"><p style="text-align:center;color:#999;">السلة فاضية</p></div>
-    </div>
+function calcDelivery(){
+  if(deliveryType==='pickup'){ deliveryFee=0; return; }
+  if(!currentLatLng){ deliveryFee=0; return; }
+  distanceKm = getDistance(restaurantLocation.lat, restaurantLocation.lng, currentLatLng.lat, currentLatLng.lng);
+  if(distanceKm <= 1) deliveryFee = 0;
+  else if(distanceKm <= 5) deliveryFee = 5;
+  else if(distanceKm <= 10) deliveryFee = 8;
+  else deliveryFee = 10;
 
-    <div class="customer-form">
-      <h3>بيانات الطلب</h3>
-      <div class="delivery-toggle">
-        <button id="pickup-btn" onclick="setDeliveryType('pickup')">استلام من المطعم</button>
-        <button id="delivery-btn" class="active" onclick="setDeliveryType('delivery')">توصيل</button>
-      </div>
-      <input type="text" id="customer-name" placeholder="الاسم الكامل *" required>
-      <input type="tel" id="customer-phone" placeholder="رقم الجوال *" required>
-      <input type="text" id="customer-area" placeholder="المنطقة * مثال: النعيمية 1">
+  let info = document.getElementById('distanceInfo');
+  let feeText = deliveryFee==0? 'مجاناً 🎉' : deliveryFee+' درهم';
+  info.innerHTML = 📏 المسافة: ${distanceKm.toFixed(2)} كم<br>🚚 سعر التوصيل: <b>${feeText}</b>;
 
-      <div id="delivery-section">
-        <button type="button" class="location-btn" onclick="getLocation()">📍 استخدم موقعي الحالي</button>
-        <input type="text" id="customer-location" placeholder="رابط الموقع *" readonly>
-        <input type="text" id="customer-house
+  document.getElementById('deliveryLabel').innerText = توصيل (${distanceKm.toFixed(1)} كم);
+  document.getElementById('deliveryCost').innerText = deliveryFee==0? 'مجاناً' : deliveryFee+' AED';
+}
+
+let menuData = [
+{cat:"شاورما",items:[
+{name:"ساندويش شاورما دجاج",en:"Chicken Shawarma",p:[7,11,0]},
+{name:"ساندويش شاورما لحم",en:"Meat Shawarma",p:[8,12,0]},
+{name:"وجبة عربي دجاج",en:"Arabic Chicken Meal",p:[15,22,26]},
+{name:"وجبة عربي لحم",en:"Arabic Meat Meal",p:[18,26,30]},
+{name:"صحن شاورما دجاج",en:"Chicken Plate",p:[7,15,25]},
+{name:"صحن بطاطا",en:"Potato Plate",p:[5,10,15]},
+{name:"صحن بطاطا بالجبنة",en:"Potato with Cheese",p:[7,12,17]},
+{name:"صحن شاورما لحم",en:"Meat Plate",p:[7,17,30]},
+]},
+{cat:"ساندويش",items:[
+{name:"ساندويش كباب لحم",en:"Meat Kebab",p:[10,15,0]},
+{name:"ساندويش كباب دجاج",en:"Chicken Kebab",p:[8,12,0]},
+{name:"ساندويش شيش طاووق",en:"Shish Tawook",p:[8,10,0]},
+{name:"ساندويش فلافل",en:"Falafel",p:[5,8,0]},
+{name:"ساندويش كبدة دجاج",en:"Chicken Liver",p:[6,12,0]},
+]},
+{cat:"صحون ومقبلات",items:[
+{name:"صحن فول",en:"Foul",p:[10,15,20]},
+{name:"صحن مقالي مشكلة",en:"Mixed Fried",p:[15,20,25]},
+{name:"صحن شكشوكة",en:"Shakshuka",p:[12,15,20]},
+{name:"صحن حمص",en:"Hummus",p:[10,15,20]},
+{name:"صحن حمص باللحمة",en:"Hummus with Meat",p:[15,20,25]},
+{name:"صحن تبولة",en:"Tabbouleh",p:[12,15,20]},
+{name:"صحن فتوش",en:"Fattoush",p:[12,15,20]},
+]},
+{cat:"مشاوي وبرجر",items:[
+{name:"كيلو مشاوي مشكلة",en:"1KG Mixed Grill",p:[65,65,65]},
+{name:"كيلو كباب مع تكة",en:"Kebab + Tikka",p:[75,75,75]},
+{name:"كيلو شيش طاووق",en:"1KG Shish Tawook",p:[60,60,60]},
+{name:"صينية مشاوي 3 كغ",en:"3KG Grill Tray",p:[160,160,160]},
+{name:"برجر دجاج",en:"Chicken Burger",p:[10,10,10]},
+{name:"برجر لحم",en:"Meat Burger",p:[10,10,10]},
+]},
+{cat:"عصائر ومشروبات",items:[
+{name:"عصير مانجا",en:"Mango Juice",p:[8,8,8]},
+{name:"عصير فراولة",en:"Strawberry Juice",p:[10,10,10]},
+{name:"عصير برتقال",en:"Orange Juice",p:[8,8,8]},
+{name:"عصير ليمون ونعناع",en:"Lemon Mint",p:[8,8,8]},
+{name:"عصير بطيخ",en:"Watermelon Juice",p:[8,8,8]},
+{name:"كوكتيل موز وحليب",en:"Banana Milk",p:[10,10,10]},
+{name:"كوكتيل شامي",en:"Shami Cocktail",p:[12,12,12]},
+{name:"لبن عيران",en:"Ayran",p:[3,3,3]},
+{name:"مشروبات غازية",en:"Soft Drinks",p:[3,3,3]},
+{name:"مياه معدنية",en:"Water",p:[1,1,1]},
+]}
+];
+let cartState={}; let idCounter=0; let menuDiv=document.getElementById('menu');
+menuData.forEach(section=>{
+let catDiv=document.createElement('div'); catDiv.className='cat'; catDiv.innerText=section.cat; menuDiv.appendChild(catDiv);
+section.items.forEach(item=>{
+idCounter++;
+let hasM=item.p[1]>0 && item.p[1]!=item.p[0];
+let hasL=item.p[2]>0 && item.p[2]!=item.p[1] && item.p[2]!=0 && item.p[2]!=item.p[0];
+cartState[idCounter]={name:item.name,price:item.p[0],qty:0,size:'S صغير'};
+let div=document.createElement('div'); div.className='item'; div.dataset.prices=JSON.stringify(item.p);
+div.innerHTML=<div class="item-info"><h3>${item.name}</h3><div class="en">${item.en}</div><div class="price" id="price-${idCounter}">${item.p[0]} AED</div><div class="sizes"><div class="size active" onclick="setSize(${idCounter},0,this)">صغير S</div>${hasM?<div class="size" onclick="setSize(${idCounter},1,this)">وسط M</div>:''}${hasL?<div class="size" onclick="setSize(${idCounter},2,this)">كبير L</div>:''}</div></div><div class="qty"><button onclick="changeQty(${idCounter},-1)">-</button><span id="q-${idCounter}">0</span><button onclick="changeQty(${idCounter},1)">+</button></div>;
+menuDiv.appendChild(div);
+});
+});
+map=L.map('map').setView([restaurantLocation.lat, restaurantLocation.lng],13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+L.marker([restaurantLocation.lat, restaurantLocation.lng]).addTo(map).bindPopup("مطعم نبع العراد 📍").openPopup();
+map.on('click',e=>setMarker(e.latlng));
+function setMarker(latlng){if(marker) map.removeLayer(marker); marker=L.marker(latlng).addTo(map); currentLatLng=latlng; document.getElementById('locLink').value=https://www.google.com/maps?q=${latlng.lat},${latlng.lng}; calcDelivery(); updateCart();}
+function getMyLocation(){if(navigator.geolocation){navigator.geolocation.getCurrentPosition(pos=>{let ll={lat:pos.coords.latitude,lng:pos.coords.longitude}; map.setView(ll,16); setMarker(ll);});}}
+function setSize(id,idx,el){el.parentElement.querySelectorAll('.size').forEach(s=>s.classList.remove('active')); el.classList.add('active'); let all=JSON.parse(el.closest('.item').dataset.prices); let p=all[idx]; cartState[id].price=p; cartState[id].size= idx==0?'S صغير': idx==1?'M وسط':'L كبير'; document.getElementById('price-'+id).innerText=p+' AED'; updateCart();}
+function changeQty(id,d){let v=cartState[id].qty+d; if(v<0)v=0; if(v>20)v=20; cartState[id].qty=v; document.getElementById('q-'+id).innerText=v; updateCart();}
+function updateCart(){let sub=0,count=0,types=0; for(let k in cartState){if(cartState[k].qty>0){sub+=cartState[k].price*cartState[k].qty; count+=cartState[k].qty; types++;}} document.getElementById('count').innerText= types==0?'0 صنف':${types} اصناف - ${count} قطعة; document.getElementById('sub').innerText=sub+' AED'; let grand= count>0? sub+deliveryFee:0; document.getElementById('grand').innerText=grand+' AED'; let btn=document.getElementById('sendBtn'); if(count>0){btn.disabled=false; btn.innerText=ارسال واتساب - ${grand} AED 📲;} else{btn.disabled=true; btn.innerText='أضف طلب أولاً';}}
+function sendWA(){
+let area=document.getElementById('area')?.value || '';
+let btype=document.getElementById('btype')?.value || '';
+let bnum=document.getElementById('bnum')?.value || '';
+let phone=document.getElementById('phone').value;
+let apt=document.getElementById('apt')?.value || '';
+let loc=document.getElementById('locLink')?.value || '';
+
+if(!phone){alert('عبي رقم الموبايل');return;}
+if(deliveryType==='delivery'){
+  if(!area||!bnum){alert('عبي المنطقة ورقم الفيلا/البناية');return;}
+  if(!currentLatLng){alert('حدد موقعك على الخريطة لحساب التوصيل');return;}
+}
+
+let msg=طلب جديد - مطعم نبع العراد%0A%0A;
+for(let k in cartState){if(cartState[k].qty>0){msg+=• ${cartState[k].name} (${cartState[k].size}) × ${cartState[k].qty} = ${cartState[k].price*cartState[k].qty} AED%0A;}}
+let sub=document.getElementById('sub').innerText;
+let grand=document.getElementById('grand').innerText;
+msg+=%0A--------------------%0Aمجموع الاكل: ${sub}%0A;
+
+if(deliveryType==='pickup'){
+  msg+=نوع الطلب: استلام من المطعم 🏃‍♂️%0A;
+} else {
+  msg+=المسافة: ${distanceKm.toFixed(2)} كم%0A;
+  msg+=التوصيل: ${deliveryFee==0?'مجاناً 🎉':deliveryFee+' AED'}%0A;
+}
+msg+=المجموع الكلي: ${grand}%0A%0A;
+
+if(deliveryType==='delivery'){
+  msg+=📍 المنطقة: ${area}%0A🏠 ${btype}: ${bnum}%0A;
+  if(apt) msg+=🏢 شقة: ${apt}%0A;
+  msg+=📌 موقعي: ${loc}%0A;
+} else {
+  msg+=🏃‍♂️ استلام من المطعم%0A;
+}
+msg+=📱 موبايل: ${phone}%0A;
+window.open(https://wa.me/${waNumber}?text=${msg},"_blank");
+}
+</script>
+</body>
+</html>

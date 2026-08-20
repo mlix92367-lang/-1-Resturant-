@@ -6,40 +6,68 @@
 <title>منيو نبع العراد</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --main:#D4AF37; /* ذهبي */
+    --dark:#8B4513; /* بني */
+    --bg:#FFFAF0; /* بيج فاتح */
+    --card:#FFFFFF; /* ابيض */
+    --text:#333; /* رمادي غامق */
+  }
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal', sans-serif;scroll-behavior:smooth;}
-  body{background:#0a0a0a;color:#fff;padding-bottom:170px;}
-  header{background:linear-gradient(135deg,#d4af37,#8b0000);text-align:center;padding:25px 15px;position:sticky;top:0;z-index:100;}
-  header h1{font-size:30px;font-weight:900;}
-  nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px;}
-  nav a{background:rgba(0,0,0,0.3);padding:7px 12px;border-radius:20px;color:#fff;text-decoration:none;font-size:12px;font-weight:700;}
-  .container{max-width:950px;margin:auto;padding:20px;}
-  .category{margin:35px 0;}
-  .category h2{background:#d4af37;color:#000;padding:14px 18px;border-radius:12px;font-size:20px;margin-bottom:15px;font-weight:900;text-align:center;}
-  .aed{color:#ff3333;font-size:18px;text-align:center;margin-bottom:10px;font-weight:900;}
-  .item-card{display:flex;gap:12px;background:#1a1a1a;padding:12px;border-radius:12px;margin-bottom:12px;align-items:center;}
-  .item-card img{width:75px;height:75px;border-radius:10px;object-fit:cover;border:2px solid #d4af37;}
+  body{background:var(--bg);color:var(--text);}
+  header{background:linear-gradient(135deg,var(--main),var(--dark));text-align:center;padding:25px 15px;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+  .logo{width:90px;height:90px;border-radius:50%;border:3px solid #fff;margin-bottom:10px;background:#fff;object-fit:cover;}
+  header h1{font-size:32px;font-weight:900;color:#fff;margin-bottom:5px;}
+  header p{color:#fff;font-size:14px;opacity:0.9;}
+  nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:15px;}
+  nav a{background:rgba(255,255,255,0.2);padding:8px 16px;border-radius:25px;color:#fff;text-decoration:none;font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,0.3);}
+  nav a:hover{background:#fff;color:var(--dark);}
+  
+  .main-wrapper{display:flex;gap:20px;max-width:1300px;margin:20px auto;padding:0 15px;}
+  .menu-content{flex:1;}
+  .sidebar{width:350px;position:sticky;top:120px;height:fit-content;}
+  
+  .category{margin-bottom:35px;}
+  .category h2{background:var(--main);color:#fff;padding:14px 18px;border-radius:12px;font-size:20px;margin-bottom:15px;font-weight:900;text-align:center;box-shadow:0 3px 10px rgba(212,175,55,0.3);}
+  .aed{color:var(--dark);font-size:16px;text-align:center;margin-bottom:10px;font-weight:900;}
+  
+  .item-card{display:flex;gap:12px;background:var(--card);padding:14px;border-radius:15px;margin-bottom:12px;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid #eee;}
+  .item-card:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+  .item-card img{width:75px;height:75px;border-radius:12px;object-fit:cover;border:2px solid var(--main);}
   .item-info{flex:1;}
-  .item-info h3{font-size:15px;margin-bottom:4px;color:#ffd700;}
-  .price{color:#ffd700;font-weight:900;font-size:16px;}
-  .btn{background:#25D366;color:#fff;border:none;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:900;font-size:18px;}
-  .cart-bar{position:fixed;bottom:0;left:0;right:0;background:#111;padding:15px;border-top:2px solid #d4af37;z-index:999;}
-  .cart-items{max-height:120px;overflow-y:auto;margin-bottom:10px;}
-  .cart-item{display:flex;justify-content:space-between;align-items:center;background:#1a1a1a;padding:8px 12px;border-radius:8px;margin-bottom:8px;font-size:13px;}
-  .qty-controls{display:flex;align-items:center;gap:8px;}
-  .qty-btn{background:#333;color:#fff;border:none;padding:4px 8px;border-radius:5px;cursor:pointer;font-weight:900;}
-  .customer-form{background:#1a1a1a;padding:12px;border-radius:10px;margin-bottom:10px;}
-  .customer-form input, .customer-form select{width:100%;padding:10px;margin-bottom:8px;border-radius:8px;border:1px solid #333;background:#0a0a0a;color:#fff;}
-  .order-btn{width:100%;background:#25D366;color:#fff;padding:14px;border-radius:10px;text-decoration:none;font-weight:900;font-size:16px;display:block;text-align:center;}
-  .total-box{background:#222;padding:10px;border-radius:8px;margin-bottom:10px;}
-  .total-row{display:flex;justify-content:space-between;margin-bottom:5px;font-size:14px;}
-  .total-final{color:#ffd700;font-size:18px;font-weight:900;border-top:1px solid #333;padding-top:5px;margin-top:5px;}
-  .delivery-note{font-size:11px;color:#00ff88;text-align:center;margin-bottom:8px;}
+  .item-info h3{font-size:15px;margin-bottom:5px;color:var(--dark);font-weight:900;}
+  .price{color:var(--main);font-weight:900;font-size:16px;}
+  .btn{background:var(--main);color:#fff;border:none;padding:8px 14px;border-radius:10px;cursor:pointer;font-weight:900;font-size:18px;transition:0.3s;}
+  .btn:hover{background:var(--dark);}
+  
+  .cart-box, .customer-form{background:var(--card);padding:18px;border-radius:15px;margin-bottom:15px;box-shadow:0 3px 12px rgba(0,0,0,0.05);border:1px solid #eee;}
+  .cart-box h3, .customer-form h3{color:var(--dark);margin-bottom:12px;text-align:center;font-weight:900;}
+  .cart-items{max-height:220px;overflow-y:auto;margin-bottom:10px;}
+  .cart-item{display:flex;justify-content:space-between;align-items:center;background:var(--bg);padding:10px 12px;border-radius:10px;margin-bottom:8px;font-size:12px;}
+  .qty-controls{display:flex;align-items:center;gap:6px;}
+  .qty-btn{background:var(--main);color:#fff;border:none;padding:4px 8px;border-radius:6px;cursor:pointer;font-weight:900;}
+  .total-box{background:var(--bg);padding:12px;border-radius:10px;}
+  .total-row{display:flex;justify-content:space-between;margin-bottom:6px;font-size:14px;font-weight:700;}
+  .total-final{color:var(--dark);font-size:17px;font-weight:900;border-top:2px solid var(--main);padding-top:8px;}
+  .customer-form input, .customer-form select{width:100%;padding:11px;margin-bottom:10px;border-radius:10px;border:1px solid #ddd;background:#fff;color:var(--text);}
+  .order-btn{width:100%;background:#25D366;color:#fff;padding:15px;border-radius:12px;text-decoration:none;font-weight:900;font-size:16px;display:block;text-align:center;border:none;cursor:pointer;}
+  .delivery-note{font-size:11px;color:var(--dark);text-align:center;margin:8px 0;font-weight:700;}
+  .delivery-toggle{display:flex;gap:8px;margin-bottom:12px;}
+  .delivery-toggle button{flex:1;padding:11px;border-radius:10px;border:2px solid #ddd;background:#fff;color:var(--text);font-weight:700;cursor:pointer;}
+  .delivery-toggle button.active{background:var(--main);color:#fff;border-color:var(--main);}
+  #delivery-section{display:none;}
+  
+  @media(max-width:900px){.main-wrapper{flex-direction:column;}.sidebar{width:100%;position:relative;top:0;}}
 </style>
 </head>
 <body>
 
 <header>
+  <!-- حط رابط لوقو المطعم هنا -->
+  <img src="https://i.imgur.com/xxxxx.png" alt="شعار نبع العراد" class="logo">
+  
   <h1>مطعم نبع العراد</h1>
+  <p>اطيب النكهات الشامية في عجمان</p>
   <nav>
     <a href="#shawarma">شورما</a><a href="#grills">مشاوي</a><a href="#burgers">برجر</a>
     <a href="#sandwiches">ساندويتشات</a><a href="#plates">صحون</a><a href="#appetizers">مقبلات</a>
@@ -47,58 +75,159 @@
   </nav>
 </header>
 
-<div class="container">
-
-  <!-- حطيت مثالين من كل قسم. كمل الباقي بنفس الطريقة -->
-  <div class="category" id="shawarma">
-    <h2>شورما - Shawarma</h2>
-    <div class="aed">AED</div>
-    <div class="item-card"><img src="https://images.unsplash.com/photo-1529193591185-1d58002a9c7f?w=200"><div class="item-info"><h3>ساندويش شاورما دجاج L</h3><div class="price">11 درهم</div></div><button class="btn" onclick="addItem('ساندويش شاورما دجاج L', 11)">+</button></div>
-    <div class="item-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=200"><div class="item-info"><h3>وجبة عربي دجاج M</h3><div class="price">22 درهم</div></div><button class="btn" onclick="addItem('وجبة عربي دجاج M', 22)">+</button></div>
-  </div>
-
-  <div class="category" id="grills">
-    <h2>المشاوي - Grills</h2>
-    <div class="aed">AED</div>
-    <div class="item-card"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=200"><div class="item-info"><h3>دجاج مشوي مع مقبلات</h3><div class="price">25 درهم</div></div><button class="btn" onclick="addItem('دجاج مشوي مع مقبلات', 25)">+</button></div>
-  </div>
-
-  <div class="category" id="juices">
-    <h2>عصائر طازجة</h2>
-    <div class="aed">AED</div>
-    <div class="item-card"><img src="https://images.unsplash.com/photo-1622590229533-1c2d3a7b4b2b?w=200"><div class="item-info"><h3>عصير مانجا</h3><div class="price">8 درهم</div></div><button class="btn" onclick="addItem('عصير مانجا', 8)">+</button></div>
-  </div>
-
-</div>
-
-<div class="cart-bar">
-  <div class="cart-items" id="cart-items"></div>
+<div class="main-wrapper">
   
-  <div class="total-box">
-    <div class="total-row"><span>المجموع الفرعي:</span><span><span id="subtotal">0</span> درهم</span></div>
-    <div class="total-row"><span>التوصيل:</span><span><span id="delivery-fee">0</span> درهم</span></div>
-    <div class="total-row total-final"><span>المجموع الكلي:</span><span><span id="cart-total">0</span> درهم</span></div>
+  <div class="menu-content">
+
+    <!-- الشورما -->
+    <div class="category" id="shawarma">
+      <h2>شورما - Shawarma</h2>
+      <div class="aed">AED - صغير S - وسط M - كبير L</div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1529193591185-1d58002a9c7f?w=200"><div class="item-info"><h3>ساندويش شاورما دجاج L</h3><div class="price">11 درهم</div></div><button class="btn" onclick="addItem('ساندويش شاورما دجاج L', 11)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=200"><div class="item-info"><h3>ساندويش شاورما لحم L</h3><div class="price">12 درهم</div></div><button class="btn" onclick="addItem('ساندويش شاورما لحم L', 12)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=200"><div class="item-info"><h3>وجبة عربي دجاج M</h3><div class="price">22 درهم</div></div><button class="btn" onclick="addItem('وجبة عربي دجاج M', 22)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=200"><div class="item-info"><h3>وجبة عربي لحم M</h3><div class="price">26 درهم</div></div><button class="btn" onclick="addItem('وجبة عربي لحم M', 26)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1562967914-608e0e92d5bc?w=200"><div class="item-info"><h3>صحن شاورما دجاج M</h3><div class="price">15 درهم</div></div><button class="btn" onclick="addItem('صحن شاورما دجاج M', 15)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1562967914-608e0e92d5bc?w=200"><div class="item-info"><h3>صحن شاورما لحم M</h3><div class="price">17 درهم</div></div><button class="btn" onclick="addItem('صحن شاورما لحم M', 17)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1585238347682-496bde0c7c9b?w=200"><div class="item-info"><h3>صحن بطاطا M</h3><div class="price">10 درهم</div></div><button class="btn" onclick="addItem('صحن بطاطا M', 10)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1585238347682-496bde0c7c9b?w=200"><div class="item-info"><h3>صحن بطاطا بالجبنة M</h3><div class="price">12 درهم</div></div><button class="btn" onclick="addItem('صحن بطاطا بالجبنة M', 12)">+</button></div>
+    </div>
+
+    <!-- المشاوي -->
+    <div class="category" id="grills">
+      <h2>المشاوي - Grills</h2>
+      <div class="aed">AED</div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=200"><div class="item-info"><h3>دجاج مشوي مع مقبلات</h3><div class="price">25 درهم</div></div><button class="btn" onclick="addItem('دجاج مشوي مع مقبلات', 25)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=200"><div class="item-info"><h3>نصف دجاجة مشوية مع مقبلات</h3><div class="price">15 درهم</div></div><button class="btn" onclick="addItem('نصف دجاجة مشوية مع مقبلات', 15)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=200"><div class="item-info"><h3>1 كيلو مشاوي مشكلة</h3><div class="price">65 درهم</div></div><button class="btn" onclick="addItem('1 كيلو مشاوي مشكلة', 65)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=200"><div class="item-info"><h3>1 كيلو كباب مع كفتة</h3><div class="price">75 درهم</div></div><button class="btn" onclick="addItem('1 كيلو كباب مع كفتة', 75)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=200"><div class="item-info"><h3>1 كيلو شيش طاووق</h3><div class="price">60 درهم</div></div><button class="btn" onclick="addItem('1 كيلو شيش طاووق', 60)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=200"><div class="item-info"><h3>3 كيلو صينية مشاوي</h3><div class="price">160 درهم</div></div><button class="btn" onclick="addItem('3 كيلو صينية مشاوي', 160)">+</button></div>
+    </div>
+
+    <!-- البرجر -->
+    <div class="category" id="burgers">
+      <h2>البرجر - Burger</h2>
+      <div class="aed">AED</div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200"><div class="item-info"><h3>برجر دجاج</h3><div class="price">10 درهم</div></div><button class="btn" onclick="addItem('برجر دجاج', 10)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=200"><div class="item-info"><h3>برجر لحم</h3><div class="price">10 درهم</div></div><button class="btn" onclick="addItem('برجر لحم', 10)">+</button></div>
+    </div>
+
+    <!-- الساندويتشات -->
+    <div class="category" id="sandwiches">
+      <h2>الساندويتشات - Sandwiches</h2>
+      <div class="aed">AED - صغير S - كبير L</div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=200"><div class="item-info"><h3>ساندويش كباب لحم L</h3><div class="price">15 درهم</div></div><button class="btn" onclick="addItem('ساندويش كباب لحم L', 15)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=200"><div class="item-info"><h3>ساندويش شيش طاووق L</h3><div class="price">10 درهم</div></div><button class="btn" onclick="addItem('ساندويش شيش طاووق L', 10)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=200"><div class="item-info"><h3>ساندويش فاهيتا L</h3><div class="price">12 درهم</div></div><button class="btn" onclick="addItem('ساندويش فاهيتا L', 12)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=200"><div class="item-info"><h3>ساندويش فلافل L</h3><div class="price">8 درهم</div></div><button class="btn" onclick="addItem('ساندويش فلافل L', 8)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=200"><div class="item-info"><h3>ساندويش كبدة دجاج L</h3><div class="price">12 درهم</div></div><button class="btn" onclick="addItem('ساندويش كبدة دجاج L', 12)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=200"><div class="item-info"><h3>ساندويش فول L</h3><div class="price">10 درهم</div></div><button class="btn" onclick="addItem('ساندويش فول L', 10)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=200"><div class="item-info"><h3>ساندويش بطاطا L</h3><div class="price">10 درهم</div></div><button class="btn" onclick="addItem('ساندويش بطاطا L', 10)">+</button></div>
+    </div>
+
+    <!-- الصحون -->
+    <div class="category" id="plates">
+      <h2>الصحون - Plates</h2>
+      <div class="aed">AED - صغير S - وسط M - كبير L</div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=200"><div class="item-info"><h3>صحن فول M</h3><div class="price">15 درهم</div></div><button class="btn" onclick="addItem('صحن فول M', 15)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=200"><div class="item-info"><h3>صحن مقالي مشكلة M</h3><div class="price">20 درهم</div></div><button class="btn" onclick="addItem('صحن مقالي مشكلة M', 20)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=200"><div class="item-info"><h3>صحن شكشوكة M</h3><div class="price">15 درهم</div></div><button class="btn" onclick="addItem('صحن شكشوكة M', 15)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=200"><div class="item-info"><h3>صحن كبدة M</h3><div class="price">20 درهم</div></div><button class="btn" onclick="addItem('صحن كبدة M', 20)">+</button></div>
+    </div>
+
+    <!-- المقبلات -->
+    <div class="category" id="appetizers">
+      <h2>المقبلات - Appetizers</h2>
+      <div class="aed">AED - صغير S - وسط M - كبير L</div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=200"><div class="item-info"><h3>صحن حمص M</h3><div class="price">15 درهم</div></div><button class="btn" onclick="addItem('صحن حمص M', 15)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=200"><div class="item-info"><h3>صحن حمص باللحمة M</h3><div class="price">20 درهم</div></div><button class="btn" onclick="addItem('صحن حمص باللحمة M', 20)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=200"><div class="item-info"><h3>صحن متبل باذنجان M</h3><div class="price">15 درهم</div></div><button class="btn" onclick="addItem('صحن متبل باذنجان M', 15)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=200"><div class="item-info"><h3>صحن تبولة M</h3><div class="price">15 درهم</div></div><button class="btn" onclick="addItem('صحن تبولة M', 15)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=200"><div class="item-info"><h3>صحن فتوش M</h3><div class="price">15 درهم</div></div><button class="btn" onclick="addItem('صحن فتوش M', 15)">+</button></div>
+    </div>
+
+    <!-- المشروبات -->
+    <div class="category" id="drinks">
+      <h2>المشروبات - Drinks</h2>
+      <div class="aed">AED</div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200"><div class="item-info"><h3>لبن عيران</h3><div class="price">3 درهم</div></div><button class="btn" onclick="addItem('لبن عيران', 3)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200"><div class="item-info"><h3>مشروبات غازية</h3><div class="price">3 درهم</div></div><button class="btn" onclick="addItem('مشروبات غازية', 3)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200"><div class="item-info"><h3>مياه معدنية</h3><div class="price">1 درهم</div></div><button class="btn" onclick="addItem('مياه معدنية', 1)">+</button></div>
+    </div>
+
+    <!-- العصائر -->
+    <div class="category" id="juices">
+      <h2>عصائر طازجة - Fresh Juices</h2>
+      <div class="aed">AED</div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1622590229533-1c2d3a7b4b2b?w=200"><div class="item-info"><h3>عصير مانجا</h3><div class="price">8 درهم</div></div><button class="btn" onclick="addItem('عصير مانجا', 8)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1622590229533-1c2d3a7b4b2b?w=200"><div class="item-info"><h3>عصير فراولة</h3><div class="price">10 درهم</div></div><button class="btn" onclick="addItem('عصير فراولة', 10)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1622590229533-1c2d3a7b4b2b?w=200"><div class="item-info"><h3>عصير برتقال</h3><div class="price">8 درهم</div></div><button class="btn" onclick="addItem('عصير برتقال', 8)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1622590229533-1c2d3a7b4b2b?w=200"><div class="item-info"><h3>عصير ليمون بالنعناع</h3><div class="price">8 درهم</div></div><button class="btn" onclick="addItem('عصير ليمون بالنعناع', 8)">+</button></div>
+      <div class="item-card"><img src="https://images.unsplash.com/photo-1622590229533-1c2d3a7b4b2b?w=200"><div class="item-info"><h3>كوكتيل شامي</h3><div class="price">12 درهم</div></div><button class="btn" onclick="addItem('كوكتيل شامي', 12)">+</button></div>
+    </div>
+
   </div>
 
-  <div class="delivery-note">التوصيل: 0-1كم مجانا | 1-5كم 5 درهم | 5-10كم 8 درهم</div>
+  <!-- الشريط الجانبي -->
+  <div class="sidebar">
+    <div class="cart-box">
+      <h3>سلة الطلبات</h3>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="total-box">
+        <div class="total-row"><span>المجموع الفرعي:</span><span><span id="subtotal">0</span> درهم</span></div>
+        <div class="total-row"><span>التوصيل:</span><span><span id="delivery-fee">0</span> درهم</span></div>
+        <div class="total-row total-final"><span>المجموع الكلي:</span><span><span id="cart-total">0</span> درهم</span></div>
+      </div>
+      <div class="delivery-note">التوصيل: 0-1كم مجانا | 1-5كم 5 درهم | 5-10كم 8 درهم</div>
+    </div>
 
-  <div class="customer-form">
-    <input type="text" id="customer-name" placeholder="الاسم الكامل *" required>
-    <input type="tel" id="customer-phone" placeholder="رقم الجوال *" required>
-    <input type="text" id="customer-address" placeholder="العنوان بالتفصيل *">
-    <select id="delivery-distance" onchange="updateCart()">
-      <option value="0">المسافة من المطعم</option>
-      <option value="0">ضمن 1 كم - مجانا</option>
-      <option value="5">من 1 الى 5 كم - 5 درهم</option>
-      <option value="8">من 5 الى 10 كم - 8 درهم</option>
-    </select>
+    <div class="customer-form">
+      <h3>بيانات الطلب</h3>
+      
+      <div class="delivery-toggle">
+        <button id="pickup-btn" onclick="setDeliveryType('pickup')">استلام من المطعم</button>
+        <button id="delivery-btn" class="active" onclick="setDeliveryType('delivery')">توصيل</button>
+      </div>
+
+      <input type="text" id="customer-name" placeholder="الاسم الكامل *" required>
+      <input type="tel" id="customer-phone" placeholder="رقم الجوال *" required>
+      
+      <div id="delivery-section">
+        <input type="text" id="customer-address" placeholder="العنوان بالتفصيل *">
+        <select id="delivery-distance" onchange="updateCart()">
+          <option value="0">اختر المسافة</option>
+          <option value="0">ضمن 1 كم - مجانا</option>
+          <option value="5">من 1 الى 5 كم - 5 درهم</option>
+          <option value="8">من 5 الى 10 كم - 8 درهم</option>
+        </select>
+      </div>
+
+      <button class="order-btn" onclick="sendOrder()">📱 ارسال الطلب واتساب</button>
+    </div>
   </div>
 
-  <a href="#" id="whatsapp-order" class="order-btn" onclick="sendOrder()">📱 ارسال الطلب واتساب</a>
 </div>
 
 <script>
 let cart = [];
+let deliveryType = 'delivery';
+
+function setDeliveryType(type){
+  deliveryType = type;
+  document.getElementById('pickup-btn').classList.remove('active');
+  document.getElementById('delivery-btn').classList.remove('active');
+  document.getElementById(type+'-btn').classList.add('active');
+  
+  if(type === 'delivery'){
+    document.getElementById('delivery-section').style.display = 'block';
+  } else {
+    document.getElementById('delivery-section').style.display = 'none';
+    document.getElementById('delivery-distance').value = 0;
+  }
+  updateCart();
+}
+
 function addItem(name, price){
   let item = cart.find(i => i.name === name);
   if(item){ item.qty++; } else { cart.push({name, price, qty:1}); }
@@ -112,8 +241,9 @@ function changeQty(name, diff){
   }
   updateCart();
 }
-function getDeliveryFee(){
-  return parseInt(document.getElementById('delivery-distance').value);
+function getDeliveryFee(){ 
+  if(deliveryType === 'pickup') return 0;
+  return parseInt(document.getElementById('delivery-distance').value); 
 }
 function updateCart(){
   let cartDiv = document.getElementById('cart-items');
@@ -145,11 +275,11 @@ function sendOrder(){
   let phone = document.getElementById('customer-phone').value;
   let address = document.getElementById('customer-address').value;
   let distance = document.getElementById('delivery-distance');
-  let distanceText = distance.options[distance.selectedIndex].text;
+  let distanceText = deliveryType === 'pickup' ? 'استلام من المطعم' : distance.options[distance.selectedIndex].text;
   
   if(cart.length === 0){ alert('السلة فاضية'); return; }
-  if(name === '' || phone === '' || address === ''){ alert('من فضلك اكمل بياناتك'); return; }
-  if(getDeliveryFee() === 0 && distance.selectedIndex === 0){ alert('من فضلك اختر مسافة التوصيل'); return; }
+  if(name === '' || phone === ''){ alert('من فضلك ادخل الاسم ورقم الجوال'); return; }
+  if(deliveryType === 'delivery' && address === ''){ alert('من فضلك ادخل العنوان'); return; }
   
   let subtotal = cart.reduce((a,b)=>a+b.qty*b.price,0);
   let delivery = getDeliveryFee();
@@ -158,19 +288,18 @@ function sendOrder(){
   let msg = `طلب جديد من موقع نبع العراد%0A%0A`;
   msg += `👤 الاسم: ${name}%0A`;
   msg += `📱 الجوال: ${phone}%0A`;
-  msg += `📍 العنوان: ${address}%0A`;
-  msg += `🚚 المسافة: ${distanceText}%0A%0A`;
-  msg += `--- الطلبات --- %0A`;
-  
-  cart.forEach(i=>{
-    msg += `- ${i.name} ${i.qty} x ${i.price} درهم = ${i.qty*i.price} درهم%0A`;
-  });
+  msg += `🚚 النوع: ${distanceText}%0A`;
+  if(deliveryType === 'delivery') msg += `📍 العنوان: ${address}%0A`;
+  msg += `%0A--- الطلبات --- %0A`;
+  cart.forEach(i=>{ msg += `- ${i.name} ${i.qty} x ${i.price} درهم = ${i.qty*i.price} درهم%0A`; });
   msg += `%0Aالمجموع الفرعي: ${subtotal} درهم%0A`;
   msg += `التوصيل: ${delivery} درهم%0A`;
   msg += `💰 المجموع الكلي: ${total} درهم`;
   
   window.open(`https://wa.me/971562626868?text=${msg}`, '_blank');
 }
+
+setDeliveryType('delivery');
 </script>
 
 </body>
